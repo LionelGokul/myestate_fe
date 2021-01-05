@@ -4,6 +4,7 @@ import { useFormContext } from 'react-hook-form';
 import Grid from '@material-ui/core/Grid';
 import CustomTextField from '../../../../components/FormElements/CustomTextField';
 import { TextField } from '@material-ui/core';
+import FormSubmitSection from '../../../FormElements/FormSubmitSection';
 
 const SignUpForm = (props) => {
   const { getValues } = useFormContext();
@@ -99,31 +100,11 @@ const SignUpForm = (props) => {
       </Grid>
       <div className="margin_top">
         <Grid container direction="row">
+          <Grid item xs></Grid>
           <Grid item xs>
-            <Grid
-              container
-              direction="row"
-              justify="center"
-              alignItems="center"
-              spacing={1}
-            >
-              <Grid item>
-                <Button variant="contained" size="small" type="button">
-                  Cancel
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  variant="contained"
-                  size="small"
-                  color="primary"
-                  type="submit"
-                >
-                  Submit
-                </Button>
-              </Grid>
-            </Grid>
+            <FormSubmitSection onCancel={() => {}} />
           </Grid>
+          <Grid item xs></Grid>
         </Grid>
       </div>
     </>

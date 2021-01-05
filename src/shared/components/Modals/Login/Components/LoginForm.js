@@ -1,11 +1,11 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import CustomTextField from '../../../../components/FormElements/CustomTextField';
-import Button from '@material-ui/core/Button';
 import { useAxios } from '../../../../hooks/useAxios';
 import Form from '../../../../components/FormElements/Form';
 import { useStateValue } from '../../../../DataLayer/Context';
 import { ACTIONS } from '../../../../DataLayer/reducer';
+import FormSubmitSection from '../../../FormElements/FormSubmitSection';
 
 const LoginForm = (props) => {
   const [{}, dispatch] = useStateValue();
@@ -69,23 +69,7 @@ const LoginForm = (props) => {
           />
         </Grid>
         <Grid item xs>
-          <Grid container spacing={1} direction="row">
-            <Grid item xs>
-              <Button variant="contained" size="small" type="button">
-                Cancel
-              </Button>
-            </Grid>
-            <Grid item xs>
-              <Button
-                variant="contained"
-                size="small"
-                color="primary"
-                type="submit"
-              >
-                Submit
-              </Button>
-            </Grid>
-          </Grid>
+          <FormSubmitSection onCancel={() => {}} />
         </Grid>
       </Grid>
     </Form>

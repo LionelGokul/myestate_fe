@@ -5,6 +5,7 @@ import { TextField, Button } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import { FiEdit } from 'react-icons/fi';
 import Badge from '@material-ui/core/Badge';
+import FormSubmitSection from '../../../shared/components/FormElements/FormSubmitSection';
 
 let saveImage = false;
 const UserForm = (props) => {
@@ -126,31 +127,11 @@ const UserForm = (props) => {
       </Grid>
       <div className="margin_top">
         <Grid container direction="row">
+          <Grid item xs></Grid>
           <Grid item xs>
-            <Grid
-              container
-              direction="row"
-              justify="center"
-              alignItems="center"
-              spacing={1}
-            >
-              <Grid item>
-                <Button variant="contained" size="small" type="button">
-                  Cancel
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  variant="contained"
-                  size="small"
-                  color="primary"
-                  type="submit"
-                >
-                  Update
-                </Button>
-              </Grid>
-            </Grid>
+            <FormSubmitSection onCancel={() => {}} />
           </Grid>
+          <Grid item xs></Grid>
         </Grid>
       </div>
       <div className="margin_top"></div>
