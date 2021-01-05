@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useStateValue } from '../../../shared/DataLayer/Context';
-import { ACTIONS } from '../../../shared/DataLayer/reducer';
 import FavoriteBorderIcon from '../../../shared/Images/favorite_border-white-18dp.svg';
 import FavoriteIcon from '../../../shared/Images/favorite-white-18dp.svg';
 import Fab from '@material-ui/core/Fab';
-// import summary from '../../DetailedView/PropertyDetailedView';
-import { useAxios } from '../../../shared/hooks/useAxios';
+import { useWishList } from '../../../shared/hooks/useWishList';
 
 const PropertyCard = ({ propertyDetails }) => {
   const {
@@ -16,63 +14,17 @@ const PropertyCard = ({ propertyDetails }) => {
     details: { price },
     address: { pincode, city, state, street },
   } = propertyDetails;
-  const [{ favList, user }, dispatch] = useStateValue();
+  const { addItem, removeItem } = useWishList();
+  const [{ favList, user }] = useStateValue();
   const [ifwishListed, setIfwishListed] = useState(
     favList.find((elem) => elem.id === id) && true,
   );
-  const { sendRequest } = useAxios();
   const addToWishlist = async () => {
-    sendRequest(
-      'post',
-      'wishlist',
-      {
-        propertyId: 1,
-        userId: user.id,
-      },
-      {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    )
-      .then(() => {
-        dispatch({
-          type: ACTIONS.ADD_TO_WISHLIST,
-          property: propertyDetails,
-          user: user,
-        });
-        setIfwishListed(true);
-        console.log('user', user);
-      })
-      .catch((err) => {
-        console.log('err', err);
-      });
+    addItem(propertyDetails);
   };
 
   const removeFromWishlist = () => {
-    sendRequest(
-      'delete',
-      'removewishlist',
-      {
-        propertyId: 1,
-        userId: user.id,
-      },
-      {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    )
-      .then(() => {
-        dispatch({
-          type: ACTIONS.REMOVE_FROM_WISHLIST,
-          propertyID: id,
-          property: propertyDetails,
-          user: user,
-        });
-        setIfwishListed(false);
-      })
-      .catch((err) => {
-        console.log('err', err);
-      });
+    removeItem(propertyDetails);
   };
 
   useEffect(() => {

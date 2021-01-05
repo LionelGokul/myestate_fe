@@ -34,8 +34,11 @@ button,
   border: 0px;
 }
 
-.noitems_msg {
+.noitem_msg {
   font-style: oblique;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #e93558;
 }
 
 /* loader */

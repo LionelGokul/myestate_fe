@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Form from '../../shared/components/FormElements/Form';
 import SearchResultFilter from './Components/SearchResultsFilter';
+import Loader from '../../shared/components/UIElements/Loader';
 import './SearchResults.css';
 import PropertyData from '../../shared/DummyData/PropertyData';
 import { SearchResultsReducer } from '../../shared/DataLayer/SearchResultsReducer';
@@ -34,7 +35,7 @@ const SearchResults = () => {
     });
   };
   return (
-    <>
+    <Suspense fallback={<Loader />}>
       <Grid
         container
         direction="column"
@@ -60,7 +61,7 @@ const SearchResults = () => {
           <SearchResultsPropertyList propertyList={state.filteredData} />
         </Grid>
       </Grid>
-    </>
+    </Suspense>
   );
 };
 

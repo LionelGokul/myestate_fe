@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-import Typography from '@material-ui/core/Typography';
 import { useStateValue } from '../../../shared/DataLayer/Context';
 import MyPropertiesCard from './MyPropertiesCard';
 import { useAxios } from '../../../shared/hooks/useAxios';
@@ -36,11 +35,7 @@ const MyPropertiesList = () => {
     <>
       {properties !== undefined ? (
         properties.length === 0 ? (
-          <NoItems>
-            <Typography variant="h4" gutterBottom className="noitems_msg">
-              Sorry you have'nt created any properties.
-            </Typography>
-          </NoItems>
+          <NoItems text="Sorry you haven't created any properties." />
         ) : (
           properties.map((property) => {
             return <MyPropertiesCard property={property} key={property.id} />;

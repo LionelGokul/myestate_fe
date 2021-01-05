@@ -40,7 +40,6 @@ const DetailPropertyImage = ({ images }) => {
       {images.length > 1 ? (
         <Slider {...settings}>
           {images.map((img) => {
-            debugger;
             return (
               <div className="image_content">
                 <img width="100%" src={img.url} alt="property_image" />

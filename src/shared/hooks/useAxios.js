@@ -11,7 +11,6 @@ export const useAxios = () => {
   const alertContext = useContext(AlertMessageContext);
 
   const sendRequest = useCallback(async (method, url, data, headers = {}) => {
-    setIsLoading(true);
     setLoader(true);
     const config = {
       method: method,
