@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, useEffect, useState, Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAxios } from '../../shared/hooks/useAxios';
 import Title from '../../shared/components/UIElements/Title';
-import UploadPropertyForm from './Components/UploadPropertyForm';
 import './UploadProperty.css';
+import Loader from '../../shared/components/UIElements/Loader';
+
+const UploadPropertyForm = lazy(() =>
+  import('./Components/UploadPropertyForm'),
+);
 
 const UploadProperty = (props) => {
   const { sendRequest } = useAxios();
@@ -27,9 +31,15 @@ const UploadProperty = (props) => {
     <div className="cmn_section">
       <Title title="Upload Property" />
       {props.isEdit ? (
-        property.id && <UploadPropertyForm property={property} />
+        property.id && (
+          <Suspense fallback={<Loader />}>
+            <UploadPropertyForm property={property} />
+          </Suspense>
+        )
       ) : (
-        <UploadPropertyForm />
+        <Suspense fallback={<Loader />}>
+          <UploadPropertyForm />
+        </Suspense>
       )}
     </div>
   );

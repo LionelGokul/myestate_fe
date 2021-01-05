@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { useAxios } from '../../shared/hooks/useAxios';
-import UserForm from './Components/UserForm';
 import Form from '../../shared/components/FormElements/Form';
 import Title from '../../shared/components/UIElements/Title';
 import { useStateValue } from '../../shared/DataLayer/Context';
 import { ACTIONS } from '../../shared/DataLayer/reducer';
-import UserSections from './Components/UserSections';
+import Loader from '../../shared/components/UIElements/Loader';
+
+const UserSections = lazy(() => import('./Components/UserSections'));
+const UserForm = lazy(() => import('./Components/UserForm'));
 
 const User = (props) => {
   const [{ user }, dispatch] = useStateValue();
@@ -50,7 +52,7 @@ const User = (props) => {
     console.log(data);
   };
   return (
-    <>
+    <Suspense fallback={<Loader />}>
       <div className="cmn_section no_bg">
         <UserSections />
       </div>
@@ -66,7 +68,7 @@ const User = (props) => {
         </Form>
         <div className="margin_top"></div>
       </div>
-    </>
+    </Suspense>
   );
 };
 

@@ -1,12 +1,15 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, Suspense, lazy } from 'react';
 import { useParams } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Form from '../../shared/components/FormElements/Form';
 import SearchResultFilter from './Components/SearchResultsFilter';
 import './SearchResults.css';
 import PropertyData from '../../shared/DummyData/PropertyData';
-import SearchResultsPropertyList from './Components/SearchResultsPropertyList';
 import { SearchResultsReducer } from '../../shared/DataLayer/SearchResultsReducer';
+
+const SearchResultsPropertyList = lazy(() =>
+  import('./Components/SearchResultsPropertyList'),
+);
 
 const SearchResults = () => {
   const { query } = useParams();

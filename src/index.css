@@ -8,6 +8,7 @@ html {
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
 @import url('shared/CSS/Navbar.css');
+@import url('shared/CSS/Loader.css');
 @import url('shared/CSS/SearchBar.css');
 @import url('shared/CSS/Card.css');
 
@@ -31,6 +32,97 @@ button,
 .btn {
   cursor: pointer;
   border: 0px;
+}
+
+/* loader */
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+body {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  font-family: Montserrat;
+}
+
+.wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text {
+  color: #e93558;
+  display: inline-block;
+  margin-left: 30px;
+  font-size: 1.2em;
+}
+
+.bounceball {
+  position: relative;
+  display: inline-block;
+  height: 37px;
+  width: 15px;
+}
+.bounceball:before {
+  position: absolute;
+  content: '';
+  display: block;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e93558;
+  transform-origin: 50%;
+  -webkit-animation: bounce 500ms alternate infinite ease;
+  animation: bounce 500ms alternate infinite ease;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    top: 30px;
+    height: 5px;
+    border-radius: 60px 60px 20px 20px;
+    transform: scaleX(2);
+  }
+  35% {
+    height: 15px;
+    border-radius: 50%;
+    transform: scaleX(1);
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    top: 30px;
+    height: 5px;
+    border-radius: 60px 60px 20px 20px;
+    transform: scaleX(2);
+  }
+  35% {
+    height: 15px;
+    border-radius: 50%;
+    transform: scaleX(1);
+  }
+  100% {
+    top: 0;
+  }
+}
+
+#overlay {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  cursor: pointer;
 }
 
 /* common css */
