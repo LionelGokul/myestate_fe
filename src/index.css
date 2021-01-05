@@ -34,6 +34,10 @@ button,
   border: 0px;
 }
 
+.noitems_msg {
+  font-style: oblique;
+}
+
 /* loader */
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 body {

@@ -1,5 +1,5 @@
-import { Button } from '@material-ui/core';
-import React, { useState } from 'react';
+import { Button, useControlled } from '@material-ui/core';
+import React, { useState, useContext } from 'react';
 import { useStateValue } from '../../../shared/DataLayer/Context';
 import { useAxios } from '../../../shared/hooks/useAxios';
 import PropertyDetails from './PropertyDetails';
@@ -18,8 +18,10 @@ import {
   GetInitialValues,
   GetPropertyType,
 } from '../../../shared/services/PropertyServices';
+import AlertMessageContext from '../../../shared/DataLayer/AlertMesageContext';
 
 const UploadPropertyForm = ({ property }) => {
+  const alertContext = useContext(AlertMessageContext);
   const [{ user }] = useStateValue();
   const defaultImages =
     property !== undefined
@@ -42,7 +44,7 @@ const UploadPropertyForm = ({ property }) => {
       data,
       propType,
       files,
-      user.id,
+      10,
       sell,
       property === undefined ? [] : property.images,
     );
@@ -52,6 +54,9 @@ const UploadPropertyForm = ({ property }) => {
       'content-type': 'multipart/form-data',
     })
       .then((response) => {
+        alertContext.setOpen(true);
+        alertContext.setSuccess(true);
+        alertContext.setMsg('Successfully uplaoded property');
         console.log(response);
       })
       .catch((err) => {

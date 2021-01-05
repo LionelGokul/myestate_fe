@@ -1,15 +1,17 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useState, Suspense, lazy, useContext } from 'react';
 import { useAxios } from '../../shared/hooks/useAxios';
 import Form from '../../shared/components/FormElements/Form';
 import Title from '../../shared/components/UIElements/Title';
 import { useStateValue } from '../../shared/DataLayer/Context';
 import { ACTIONS } from '../../shared/DataLayer/reducer';
 import Loader from '../../shared/components/UIElements/Loader';
+import AlertMessageContext from '../../shared/DataLayer/AlertMesageContext';
 
 const UserSections = lazy(() => import('./Components/UserSections'));
 const UserForm = lazy(() => import('./Components/UserForm'));
 
 const User = (props) => {
+  const alertContext = useContext(AlertMessageContext);
   const [{ user }, dispatch] = useStateValue();
   const [profilePic, setProfilePic] = useState(null);
   const { sendRequest } = useAxios();
@@ -44,6 +46,9 @@ const User = (props) => {
             mobile: user.mobile,
           },
         });
+        alertContext.setOpen(true);
+        alertContext.setSuccess(true);
+        alertContext.setMsg('Successfully udated user details');
         props.handleClose();
       })
       .catch((err) => {

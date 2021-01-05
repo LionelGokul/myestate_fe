@@ -83,4 +83,4 @@ const DetailedAmenties = ({
   );
 };
 
-export default DetailedAmenties;
+export default React.memo(DetailedAmenties);

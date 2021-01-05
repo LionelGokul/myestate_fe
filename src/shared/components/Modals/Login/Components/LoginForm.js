@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Grid from '@material-ui/core/Grid';
 import CustomTextField from '../../../../components/FormElements/CustomTextField';
 import { useAxios } from '../../../../hooks/useAxios';
@@ -6,8 +6,10 @@ import Form from '../../../../components/FormElements/Form';
 import { useStateValue } from '../../../../DataLayer/Context';
 import { ACTIONS } from '../../../../DataLayer/reducer';
 import FormSubmitSection from '../../../FormElements/FormSubmitSection';
+import AlertMessageContext from '../../../../DataLayer/AlertMesageContext';
 
 const LoginForm = (props) => {
+  const alertContext = useContext(AlertMessageContext);
   const [{}, dispatch] = useStateValue();
   const { sendRequest } = useAxios();
 
@@ -36,6 +38,9 @@ const LoginForm = (props) => {
           },
           favList: user.favList,
         });
+        alertContext.setOpen(true);
+        alertContext.setSuccess(true);
+        alertContext.setMsg('Successfully logged in');
         props.handleClose();
       })
       .catch((err) => {

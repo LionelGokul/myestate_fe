@@ -56,4 +56,4 @@ const DetailPropertyImage = ({ images }) => {
     </div>
   );
 };
-export default DetailPropertyImage;
+export default React.memo(DetailPropertyImage);

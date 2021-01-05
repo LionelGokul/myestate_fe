@@ -139,4 +139,4 @@ const PropertyCard = ({ propertyDetails }) => {
   );
 };
 
-export default PropertyCard;
+export default React.memo(PropertyCard);

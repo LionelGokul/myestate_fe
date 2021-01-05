@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import Typography from '@material-ui/core/Typography';
 import { useStateValue } from '../../../shared/DataLayer/Context';
-import { ACTIONS } from '../../../shared/DataLayer/reducer';
 import MyPropertiesCard from './MyPropertiesCard';
 import { useAxios } from '../../../shared/hooks/useAxios';
+import NoItems from '../../../shared/components/UIElements/NoItems';
+import AlertMessageContext from '../../../shared/DataLayer/AlertMesageContext';
 
 const MyPropertiesList = () => {
   const { sendRequest } = useAxios();
-  const [properties, setProperties] = useState([]);
-  const [{ user }, dispatch] = useStateValue();
+  const alertContext = useContext(AlertMessageContext);
+  const [properties, setProperties] = useState();
+  const [{ user }] = useStateValue();
   useEffect(() => {
     sendRequest(
       'post',
@@ -24,17 +27,26 @@ const MyPropertiesList = () => {
         setProperties(response);
       })
       .catch((err) => {
+        alertContext.setOpen(true);
+        alertContext.setMsg(err);
         console.log('err', err);
       });
   }, []);
   return (
     <>
-      {properties?.length === 0 && (
-        <span>You have not Creayed any property.</span>
-      )}
-      {properties.map((property) => {
-        return <MyPropertiesCard property={property} key={property.id} />;
-      })}
+      {properties !== undefined ? (
+        properties.length === 0 ? (
+          <NoItems>
+            <Typography variant="h4" gutterBottom className="noitems_msg">
+              Sorry you have'nt created any properties.
+            </Typography>
+          </NoItems>
+        ) : (
+          properties.map((property) => {
+            return <MyPropertiesCard property={property} key={property.id} />;
+          })
+        )
+      ) : null}
     </>
   );
 };
