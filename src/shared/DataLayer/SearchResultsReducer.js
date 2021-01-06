@@ -43,6 +43,16 @@ export const SearchResultsReducer = (state, action) => {
         filteredData: filteredData,
       };
     }
+    case 'SEARCHED': {
+      let filteredData = state.initialData;
+      const search = action.payload;
+      console.log(search);
+      return {
+        ...state,
+        initialData: search,
+        filteredData: search,
+      };
+    }
 
     default:
       return { ...state };

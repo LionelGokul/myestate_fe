@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
@@ -11,9 +11,11 @@ import '../../../CSS/SignUp.css';
 import Form from '../../FormElements/Form';
 import { useStateValue } from '../../../DataLayer/Context';
 import { ACTIONS } from '../../../DataLayer/reducer';
+import AlertMessageContext from '../../../DataLayer/AlertMesageContext';
 
 const SignUp = (props) => {
   const { sendRequest } = useAxios();
+  const alertContext = useContext(AlertMessageContext);
   const [{}, dispatch] = useStateValue();
 
   const onSubmit = async (data) => {
@@ -45,9 +47,14 @@ const SignUp = (props) => {
             },
             favList: user.favList,
           });
+          alertContext.setOpen(true);
+          alertContext.setSuccess(true);
+          alertContext.setMsg('Successfully signed in');
           props.handleClose();
         } else {
-          alert('User Already Exists!');
+          alertContext.setOpen(true);
+          alertContext.setSuccess(false);
+          alertContext.setMsg('User already exists!');
         }
       })
       .catch((err) => {

@@ -1,22 +1,44 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useEffect, Suspense, lazy } from 'react';
 import { useParams } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Form from '../../shared/components/FormElements/Form';
 import SearchResultFilter from './Components/SearchResultsFilter';
+import Loader from '../../shared/components/UIElements/Loader';
 import './SearchResults.css';
-import PropertyData from '../../shared/DummyData/PropertyData';
-import SearchResultsPropertyList from './Components/SearchResultsPropertyList';
 import { SearchResultsReducer } from '../../shared/DataLayer/SearchResultsReducer';
+import { useStateValue } from '../../shared/DataLayer/Context';
+import { useAxios } from '../../shared/hooks/useAxios';
 
-const SearchResults = () => {
-  const { query } = useParams();
-  const [price, setPrice] = useState([0, 100000]);
+const SearchResultsPropertyList = lazy(() =>
+  import('./Components/SearchResultsPropertyList'),
+);
+
+const SearchResults = ({}) => {
+  const [{ query }] = useStateValue();
+  console.log(query);
   const initialState = {
-    initialData: PropertyData,
-    filteredData: PropertyData,
+    initialData: [],
+    filteredData: [],
   };
-  const [state, dispatch] = useReducer(SearchResultsReducer, initialState);
 
+  const { sendRequest } = useAxios();
+  const [state, dispatch] = useReducer(SearchResultsReducer, initialState);
+  const [price, setPrice] = useState([0, 100000]);
+
+  useEffect(() => {
+    sendRequest('get', `search/${query}`)
+      .then((res) => {
+        dispatch({
+          type: 'SEARCHED',
+          payload: res,
+        });
+
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const onSubmit = (data) => {
     console.log(price);
     console.log(data);
@@ -31,7 +53,7 @@ const SearchResults = () => {
     });
   };
   return (
-    <>
+    <Suspense fallback={<Loader />}>
       <Grid
         container
         direction="column"
@@ -57,7 +79,7 @@ const SearchResults = () => {
           <SearchResultsPropertyList propertyList={state.filteredData} />
         </Grid>
       </Grid>
-    </>
+    </Suspense>
   );
 };
 

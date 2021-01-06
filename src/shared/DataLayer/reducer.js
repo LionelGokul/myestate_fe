@@ -6,6 +6,7 @@ export const ACTIONS = {
   UPDATE_USER: 'UPDATE_USER',
   LOGIN_MODAL: 'LOGIN_MODAL',
   SIGNUP_MODAL: 'SIGNUP_MODAL',
+  SEARCH: 'SEARCH_QUERY',
 };
 
 const reducer = (state, action) => {
@@ -63,13 +64,18 @@ const reducer = (state, action) => {
       };
     }
     case ACTIONS.ADD_USER: {
-      debugger;
       localStorage.setItem('user', JSON.stringify(action.user));
       localStorage.setItem('favList', JSON.stringify(action.favList));
       return {
         ...state,
-        user: { ...action.user },
+        user: action.user,
         favList: [...action.favList],
+      };
+    }
+    case ACTIONS.SEARCH: {
+      return {
+        ...state,
+        query: action.query,
       };
     }
     default:
