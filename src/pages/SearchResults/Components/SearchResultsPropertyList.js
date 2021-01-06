@@ -3,6 +3,7 @@ import SearchResultsPropertyCard from './SearchResultsPropertyCard';
 import NoItems from '../../../shared/components/UIElements/NoItems';
 
 const SearchResultPropertyList = ({ propertyList }) => {
+  console.log('propertyList', propertyList);
   return (
     <>
       {propertyList !== undefined ? (

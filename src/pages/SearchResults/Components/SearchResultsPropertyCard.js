@@ -78,7 +78,7 @@ const SearchResultsPropertyCard = ({ property }) => {
         <Grid item xs style={{ width: '40%' }}>
           <img
             className="cmn_card_media"
-            src={property.pictures[0]}
+            src={property.images[0].url}
             alt={property.name}
           />
         </Grid>
@@ -89,20 +89,20 @@ const SearchResultsPropertyCard = ({ property }) => {
                 {property.name}
               </Typography>
               <Typography variant="body2" gutterBottom>
-                {property.details.roomtype}
+                {property.propertyType}
               </Typography>
               <Typography
                 variant="body2"
                 color="textSecondary"
                 className="card_prop_details"
               >
-                {property.address.city}
+                {property.city}
               </Typography>
               <Typography variant="body2" color="textSecondary" gutterBottom>
-                {property.details.sqft}
+                {property.sqft}
               </Typography>
               <Typography variant="body2" color="textSecondary" gutterBottom>
-                {property.details.price}
+                {property.price}
               </Typography>
             </Grid>
           </Grid>

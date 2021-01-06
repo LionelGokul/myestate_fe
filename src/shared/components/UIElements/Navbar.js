@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
-import { SearchBar } from './SearchBar';
+import SearchBar from './SearchBar';
 import LoginSection from './LoginSection';
 import SideBar from './SideBar';
 import HeartContainer from './HeartContainer';
