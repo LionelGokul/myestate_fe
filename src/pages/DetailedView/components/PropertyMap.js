@@ -2,11 +2,11 @@ import React from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 
 const PropertyMap = (props) => {
-  const position = [51.505, -0.09];
+  const position = [props.lat, props.long];
   return (
     <MapContainer
       center={position}
-      zoom={20}
+      zoom={18}
       style={{ height: 300, width: '80%', borderRadius: 15, margin: 'auto' }}
     >
       <TileLayer

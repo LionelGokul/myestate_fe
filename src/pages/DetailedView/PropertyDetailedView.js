@@ -72,61 +72,60 @@ const PropertyDetailedView = () => {
 
   return (
     <Suspense fallback={<Loader />}>
-      <Grid container direction="column" justify="center" alignItems="center">
-        <Grid item xs>
-          <div className="cmn_section">
-            {property.id && (
-              <>
-                <Title title="Property Summary"></Title>
-                <div className="propertyTab">
-                  <Tabs
-                    value={tabSelected}
-                    onChange={handleChange}
-                    className="property_detail_tabs"
-                    variant="scrollable"
-                    scrollButtons="on"
-                    indicatorColor="secondary"
-                    textColor="secondary"
-                    aria-label="scrollable force tabs example"
-                  >
-                    <Tab
-                      label="Overview"
-                      className="tabs"
-                      {...a11yProps(0)}
-                    ></Tab>
-                    <Tab
-                      label="Properties Images"
-                      className="tabs"
-                      {...a11yProps(1)}
-                    />
-                    <Tab
-                      label="Properties Details"
-                      className="tabs"
-                      {...a11yProps(2)}
-                    />
-                  </Tabs>
-                </div>
-                <TabPanel value={tabSelected} index={0}>
-                  <DetailPropertyOverview property={property} />
-                </TabPanel>
-                <TabPanel value={tabSelected} index={1}>
-                  <DetailPropertyImage images={property.images} />
-                </TabPanel>
-                {property.propertyAmenities !== null ? (
-                  <TabPanel value={tabSelected} index={2}>
-                    <DetailedAmenties
-                      amenities={property.propertyAmenities}
-                      furnishings={property.propertyFurnishings}
-                      rooms={property.propertyRooms}
-                    />
-                  </TabPanel>
-                ) : null}
-                <PropertyMap propertyName={property.name} />
-              </>
-            )}
-          </div>
-        </Grid>
-      </Grid>
+      <div className="cmn_section">
+        {property.id && (
+          <>
+            <Title title="Property Summary"></Title>
+            <div className="propertyTab">
+              <Tabs
+                value={tabSelected}
+                onChange={handleChange}
+                className="property_detail_tabs"
+                variant="scrollable"
+                scrollButtons="on"
+                indicatorColor="secondary"
+                textColor="secondary"
+                aria-label="scrollable force tabs example"
+              >
+                <Tab label="Overview" className="tabs" {...a11yProps(0)}></Tab>
+                <Tab
+                  label="Properties Images"
+                  className="tabs"
+                  {...a11yProps(1)}
+                />
+                {property.propertyAmenities !== null && (
+                  <Tab
+                    label="Properties Details"
+                    className="tabs"
+                    {...a11yProps(2)}
+                  />
+                )}
+              </Tabs>
+            </div>
+            <TabPanel value={tabSelected} index={0}>
+              <DetailPropertyOverview property={property} />
+            </TabPanel>
+            <TabPanel value={tabSelected} index={1}>
+              <DetailPropertyImage images={property.images} />
+            </TabPanel>
+            {property.propertyAmenities !== null ? (
+              <TabPanel value={tabSelected} index={2}>
+                <DetailedAmenties
+                  amenities={property.propertyAmenities}
+                  furnishings={property.propertyFurnishings}
+                  rooms={property.propertyRooms}
+                />
+              </TabPanel>
+            ) : null}
+            <div className="margin_top" />
+            <PropertyMap
+              propertyName={property.name}
+              lat={property.latitude}
+              long={property.longitude}
+            />
+          </>
+        )}
+      </div>
     </Suspense>
   );
 };
