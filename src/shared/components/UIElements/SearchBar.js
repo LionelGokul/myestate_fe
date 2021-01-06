@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-
-export const SearchBar = (params) => {
+import { useStateValue } from '../../DataLayer/Context';
+import { ACTIONS } from '../../DataLayer/reducer';
+import { useAxios } from '../../hooks/useAxios';
+const SearchBar = (params) => {
   const [query, setQuery] = useState('');
+  const [{}, dispatch] = useStateValue();
+  const searchQueryHandle = () => {
+    dispatch({
+      type: ACTIONS.SEARCH,
+      query: query,
+    });
+    setQuery(query);
+  };
   return (
     <div className="search_container active">
       <input
@@ -17,17 +27,18 @@ export const SearchBar = (params) => {
         name="gsearch"
         placeholder="Search Place,City,Zip"
       />
-      {query.length > 3 ? (
-        <Link to={`/search/${query}`}>
-          <button className="search_btn">
-            <BsSearch />
-          </button>
-        </Link>
-      ) : (
-        <button className="search_btn">
+      <Link to={`/search/${query}`}>
+        <button
+          className="search_btn"
+          onClick={searchQueryHandle}
+          disabled={query.length > 3 ? false : true}
+        >
           <BsSearch />
         </button>
-      )}
+      </Link>
+      )
     </div>
   );
 };
+
+export default SearchBar;
