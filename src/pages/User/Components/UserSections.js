@@ -40,4 +40,4 @@ const UserSections = (props) => {
   );
 };
 
-export default UserSections;
+export default React.memo(UserSections);

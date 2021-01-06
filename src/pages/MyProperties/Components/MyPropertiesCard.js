@@ -64,4 +64,4 @@ const MyPropertiesCard = ({ property }) => {
   );
 };
 
-export default MyPropertiesCard;
+export default React.memo(MyPropertiesCard);

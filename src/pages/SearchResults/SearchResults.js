@@ -1,13 +1,18 @@
-import React, { useReducer, useState, useEffect } from 'react';
+import React, { useReducer, useState, useEffect, Suspense, lazy } from 'react';
 import { useParams } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Form from '../../shared/components/FormElements/Form';
 import SearchResultFilter from './Components/SearchResultsFilter';
+import Loader from '../../shared/components/UIElements/Loader';
 import './SearchResults.css';
-import SearchResultsPropertyList from './Components/SearchResultsPropertyList';
 import { SearchResultsReducer } from '../../shared/DataLayer/SearchResultsReducer';
 import { useStateValue } from '../../shared/DataLayer/Context';
 import { useAxios } from '../../shared/hooks/useAxios';
+
+const SearchResultsPropertyList = lazy(() =>
+  import('./Components/SearchResultsPropertyList'),
+);
+
 const SearchResults = ({}) => {
   const [{ query }] = useStateValue();
   console.log(query);
@@ -48,7 +53,7 @@ const SearchResults = ({}) => {
     });
   };
   return (
-    <>
+    <Suspense fallback={<Loader />}>
       <Grid
         container
         direction="column"
@@ -74,7 +79,7 @@ const SearchResults = ({}) => {
           <SearchResultsPropertyList propertyList={state.filteredData} />
         </Grid>
       </Grid>
-    </>
+    </Suspense>
   );
 };
 

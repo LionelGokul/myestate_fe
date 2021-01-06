@@ -64,12 +64,11 @@ const reducer = (state, action) => {
       };
     }
     case ACTIONS.ADD_USER: {
-      debugger;
       localStorage.setItem('user', JSON.stringify(action.user));
       localStorage.setItem('favList', JSON.stringify(action.favList));
       return {
         ...state,
-        user: { ...action.user },
+        user: action.user,
         favList: [...action.favList],
       };
     }

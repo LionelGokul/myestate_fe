@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useAxios } from '../../../../hooks/useAxios';
 import ReactGoogleLogin from 'react-google-login';
 import GoogleLogo from '../../../../../shared/Images/googleLogo.png';
 import { useStateValue } from '../../../../DataLayer/Context';
 import { ACTIONS } from '../../../../DataLayer/reducer';
+import AlertMessageContext from '../../../../DataLayer/AlertMesageContext';
 
 const GoogleLogin = (props) => {
+  const alertContext = useContext(AlertMessageContext);
   const [{}, dispatch] = useStateValue();
   const { sendRequest } = useAxios();
 
@@ -36,6 +38,9 @@ const GoogleLogin = (props) => {
           },
           favList: user.favList,
         });
+        alertContext.setOpen(true);
+        alertContext.setSuccess(true);
+        alertContext.setMsg('Successfully logged in');
         props.handleClose();
       })
       .catch((err) => {
