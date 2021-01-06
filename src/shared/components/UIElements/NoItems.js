@@ -6,6 +6,7 @@ const NoItems = (props) => {
   return (
     <Grid container direction="column" justify="center" alignItems="center">
       <img
+        alt="no result icon"
         src={undraw_No_data_re_kwbl}
         style={{ height: 200, margin: 0, width: '100%' }}
       />

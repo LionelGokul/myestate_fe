@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import CustomTextField from '../../../shared/components/FormElements/CustomTextField';
-import { TextField, Button } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import { FiEdit } from 'react-icons/fi';
 import Badge from '@material-ui/core/Badge';

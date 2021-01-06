@@ -5,9 +5,8 @@ import LoaderContext from '../DataLayer/LoaderContext';
 import AlertMessageContext from '../DataLayer/AlertMesageContext';
 
 export const useAxios = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const { loader, setLoader } = useContext(LoaderContext);
+  const { setLoader } = useContext(LoaderContext);
   const alertContext = useContext(AlertMessageContext);
 
   const sendRequest = useCallback(async (method, url, data, headers = {}) => {
@@ -38,5 +37,5 @@ export const useAxios = () => {
     setError(null);
   };
 
-  return { isLoading, error, sendRequest, clearError };
+  return { error, sendRequest, clearError };
 };
