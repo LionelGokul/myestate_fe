@@ -6,6 +6,7 @@ export const ACTIONS = {
   UPDATE_USER: 'UPDATE_USER',
   LOGIN_MODAL: 'LOGIN_MODAL',
   SIGNUP_MODAL: 'SIGNUP_MODAL',
+  SEARCH: 'SEARCH_QUERY',
 };
 
 const reducer = (state, action) => {
@@ -70,6 +71,12 @@ const reducer = (state, action) => {
         ...state,
         user: { ...action.user },
         favList: [...action.favList],
+      };
+    }
+    case ACTIONS.SEARCH: {
+      return {
+        ...state,
+        query: action.query,
       };
     }
     default:
