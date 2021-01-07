@@ -32,7 +32,6 @@ const Routing = () => {
       let expiry = JSON.parse(localStorage.getItem('me_exp'));
       console.log(new Date(expiry));
       if (current > new Date(expiry)) {
-        loggedIn = false;
         setOpen(true);
         setSuccess(false);
         setMsg('User session timed out please Log in again.');
