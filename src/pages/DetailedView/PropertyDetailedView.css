@@ -81,4 +81,5 @@ div > .price,
 }
 .image_content > img {
   border-radius: 30px;
+  height: 100%;
 }

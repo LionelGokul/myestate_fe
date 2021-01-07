@@ -40,11 +40,12 @@ const UploadPropertyForm = ({ property }) => {
   );
 
   const onSubmit = (data) => {
+    debugger;
     const formData = GetRequestData(
       data,
       propType,
       files,
-      10,
+      user.id,
       sell,
       property === undefined ? [] : property.images,
     );

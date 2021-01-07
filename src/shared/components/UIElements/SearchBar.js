@@ -36,7 +36,6 @@ const SearchBar = (params) => {
           <BsSearch />
         </button>
       </Link>
-      )
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { useParams } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
 import { useAxios } from '../../shared/hooks/useAxios';
 import Title from '../../shared/components/UIElements/Title';
 import { Tab, Tabs } from '@material-ui/core';
@@ -12,6 +13,7 @@ import Loader from '../../shared/components/UIElements/Loader';
 const DetailPropertyOverview = lazy(() =>
   import('./Components/DetailPropertyOverview'),
 );
+const PropertyMap = lazy(() => import('./Components/PropertyMap'));
 const DetailPropertyImage = lazy(() =>
   import('./Components/DetailPropertyImage'),
 );
@@ -91,11 +93,13 @@ const PropertyDetailedView = () => {
                   className="tabs"
                   {...a11yProps(1)}
                 />
-                <Tab
-                  label="Properties Details"
-                  className="tabs"
-                  {...a11yProps(2)}
-                />
+                {property.propertyAmenities !== null && (
+                  <Tab
+                    label="Properties Details"
+                    className="tabs"
+                    {...a11yProps(2)}
+                  />
+                )}
               </Tabs>
             </div>
             <TabPanel value={tabSelected} index={0}>
@@ -113,6 +117,12 @@ const PropertyDetailedView = () => {
                 />
               </TabPanel>
             ) : null}
+            <div className="margin_top" />
+            <PropertyMap
+              propertyName={property.name}
+              lat={property.latitude}
+              long={property.longitude}
+            />
           </>
         )}
       </div>
