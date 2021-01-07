@@ -25,9 +25,9 @@ const Routing = () => {
       </Switch>
     );
 
-  let loggedIn = true;
+  // validating user session with expiry time
   setInterval(() => {
-    if (user.id !== undefined && loggedIn) {
+    if (user.id !== undefined) {
       let current = new Date();
       let expiry = JSON.parse(localStorage.getItem('me_exp'));
       console.log(new Date(expiry));

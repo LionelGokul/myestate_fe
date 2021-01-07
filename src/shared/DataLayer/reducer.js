@@ -66,7 +66,8 @@ const reducer = (state, action) => {
     }
     case ACTIONS.ADD_USER: {
       let expiryTime = new Date();
-      expiryTime.setMinutes(expiryTime.getMinutes() + 1);
+      // 30 minutes user session expiry time
+      expiryTime.setMinutes(expiryTime.getMinutes() + 30);
       localStorage.setItem('me_exp', JSON.stringify(expiryTime));
       localStorage.setItem('me_user', JSON.stringify(action.user));
       localStorage.setItem('me_favList', JSON.stringify(action.favList));
