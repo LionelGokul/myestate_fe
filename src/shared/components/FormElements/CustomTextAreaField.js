@@ -14,8 +14,12 @@ const CustomTextAreaField = (props) => {
         id={props.id}
         name={props.name}
         ref={register(props.validation || { required: props.required })}
-        className="cmn_textareafield"
-        {...props}
+        className={
+          props.className !== undefined
+            ? `cmn_textareafield ${props.className}`
+            : 'cmn_textareafield'
+        }
+        placeholder={props.placeholder || ''}
       />
       {errors[props.id] && <InputError error={errors[props.id]} />}
     </div>

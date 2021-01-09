@@ -14,6 +14,7 @@ import Loader from './shared/components/UIElements/Loader';
 import AlertMessage from './shared/components/UIElements/AlertMessage';
 import LoaderContext from './shared/DataLayer/LoaderContext';
 import AlertMessageContext from './shared/DataLayer/AlertMesageContext';
+import Footer from './shared/components/UIElements/Footer';
 
 function App() {
   // locader context
@@ -90,6 +91,7 @@ function App() {
                 <Route exact path="/search/:query" component={SearchResults} />
               </Switch>
             </div>
+            <Footer />
           </LoaderContext.Provider>
         </AlertMessageContext.Provider>
       </Router>

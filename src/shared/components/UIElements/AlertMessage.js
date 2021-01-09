@@ -10,7 +10,7 @@ const AlertMessage = () => {
     <Snackbar
       open={context.open}
       TransitionComponent={Fade}
-      autoHideDuration={4000}
+      autoHideDuration={2000}
       onClose={context.closeAlert}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
     >

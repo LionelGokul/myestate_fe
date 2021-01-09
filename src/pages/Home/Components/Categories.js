@@ -29,13 +29,13 @@ const Categories = () => {
         <div className="categories_types_center">
           {CategoriesImages.map((categories, id) => {
             return (
-              <article className="category" key={id}>
+              <div className="category" key={id}>
                 <div className="img_container">
                   <img src={categories.image} alt={categories.name} />
                   <Link className="categories_button">View all</Link>
                 </div>
                 <p className="categories_info">{categories.name}</p>
-              </article>
+              </div>
             );
           })}
         </div>

@@ -102,5 +102,11 @@
 }
 
 .sidebar_user_img {
+  border-radius: 20px;
   width: 45px;
+  margin-right: 5%;
+}
+
+.nav-text span {
+  margin-left: 5%;
 }

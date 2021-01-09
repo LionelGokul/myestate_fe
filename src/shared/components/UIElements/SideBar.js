@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import sideBarData from '../../DummyData/SideBarData';
-import { Link } from 'react-router-dom';
+import { SideBarData, loggedInSideBarData } from '../../DummyData/SideBarData';
+import { NavLink, Link } from 'react-router-dom';
 import { useStateValue } from '../../../shared/DataLayer/Context';
 import { default as UserIcon } from '../../Images/user.svg';
 import { ACTIONS } from '../../../shared/DataLayer/reducer';
@@ -51,16 +51,45 @@ const SideBar = (props) => {
             )}
           </div>
         </li>
-        {sideBarData.map((item, index) => {
-          return (
-            <li key={index} className={item.cName}>
-              <Link to={item.path}>
-                {item.icon}
-                <span>{item.title}</span>
-              </Link>
-            </li>
-          );
-        })}
+        {user.id === undefined
+          ? SideBarData.map((item, index) => {
+              if (item.onClick === undefined)
+                return (
+                  <li key={index} className={item.cName}>
+                    <NavLink to={item.path}>
+                      {item.icon}
+                      <span>{item.title}</span>
+                    </NavLink>
+                  </li>
+                );
+              return (
+                <li key={index} className={item.cName} onClick={item.onClick}>
+                  <NavLink to={item.path}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </NavLink>
+                </li>
+              );
+            })
+          : loggedInSideBarData.map((item, index) => {
+              if (item.onClick === undefined)
+                return (
+                  <li key={index} className={item.cName}>
+                    <NavLink to={item.path}>
+                      {item.icon}
+                      <span>{item.title}</span>
+                    </NavLink>
+                  </li>
+                );
+              return (
+                <li key={index} className={item.cName} onClick={item.onClick}>
+                  <NavLink to={item.path}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </NavLink>
+                </li>
+              );
+            })}
       </ul>
     </nav>
   );
