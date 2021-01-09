@@ -11,6 +11,9 @@ const Home = () => {
     <Suspense fallback={<Loader />}>
       <Title title="Categories" />
       <Categories />
+      <div className="margin_top" />
+      <div className="margin_top" />
+      <div className="margin_top" />
       <div className="cmn_section">
         <Title title="Featured Properties" />
         <PropertyList />
