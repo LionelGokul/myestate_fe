@@ -7,6 +7,7 @@ export const ACTIONS = {
   LOGIN_MODAL: 'LOGIN_MODAL',
   SIGNUP_MODAL: 'SIGNUP_MODAL',
   SEARCH: 'SEARCH_QUERY',
+  SIGN_OUT: 'SIGN_OUT',
 };
 
 const reducer = (state, action) => {
@@ -14,7 +15,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.ADD_TO_WISHLIST: {
       const newFav = [...state.favList, action.property];
-      localStorage.setItem('favList', JSON.stringify(newFav));
+      localStorage.setItem('me_favList', JSON.stringify(newFav));
       return {
         ...state,
         favList: [...newFav],
@@ -27,7 +28,7 @@ const reducer = (state, action) => {
       };
     }
     case ACTIONS.UPDATE_USER: {
-      localStorage.setItem('user', JSON.stringify(action.user));
+      localStorage.setItem('me_user', JSON.stringify(action.user));
       return {
         ...state,
         user: action.user,
@@ -39,7 +40,7 @@ const reducer = (state, action) => {
           return true;
         }
       });
-      localStorage.setItem('favList', JSON.stringify(newFav));
+      localStorage.setItem('me_favList', JSON.stringify(newFav));
       return {
         ...state,
         favList: newFav === undefined ? [] : [...newFav],
@@ -65,8 +66,12 @@ const reducer = (state, action) => {
       };
     }
     case ACTIONS.ADD_USER: {
-      localStorage.setItem('user', JSON.stringify(action.user));
-      localStorage.setItem('favList', JSON.stringify(action.favList));
+      let expiryTime = new Date();
+      // 30 minutes user session expiry time
+      expiryTime.setMinutes(expiryTime.getMinutes() + 30);
+      localStorage.setItem('me_exp', JSON.stringify(expiryTime));
+      localStorage.setItem('me_user', JSON.stringify(action.user));
+      localStorage.setItem('me_favList', JSON.stringify(action.favList));
       return {
         ...state,
         user: action.user,
@@ -77,6 +82,14 @@ const reducer = (state, action) => {
       return {
         ...state,
         query: action.query,
+      };
+    }
+    case ACTIONS.SIGN_OUT: {
+      localStorage.clear();
+      return {
+        ...state,
+        user: {},
+        favList: [],
       };
     }
     default:

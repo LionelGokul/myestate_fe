@@ -28,6 +28,9 @@ a {
   outline: 0;
 }
 
+#simple-menu {
+  margin-top: 25px;
+}
 button,
 .btn {
   cursor: pointer;
