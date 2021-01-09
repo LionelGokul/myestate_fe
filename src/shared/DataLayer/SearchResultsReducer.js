@@ -1,3 +1,9 @@
+export const ACTIONS = {
+  FILTER: 'FILTER_DATA',
+  CATEGORY: 'CATEGORY_DATA',
+  SEARCHED: 'SEARCHED_DATA',
+};
+
 export const SearchResultsReducer = (state, action) => {
   switch (action.type) {
     case 'filter': {
@@ -51,6 +57,16 @@ export const SearchResultsReducer = (state, action) => {
         ...state,
         initialData: search,
         filteredData: search,
+      };
+    }
+    case 'TYPE': {
+      let filteredData = state.initialData;
+      const CategorytypeData = action.payload;
+      console.log(CategorytypeData);
+      return {
+        ...state,
+        initialData: CategorytypeData,
+        filteredData: CategorytypeData,
       };
     }
 

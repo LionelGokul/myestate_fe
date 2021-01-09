@@ -10,6 +10,7 @@ import MyProperties from './pages/MyProperties/MyProperties';
 import SearchResults from './pages/SearchResults/SearchResults';
 import { StateProvider } from './shared/DataLayer/Context';
 import reducer from './shared/DataLayer/reducer';
+import CategoryResults from './pages/CategoryView/CategoryResults';
 
 function App() {
   const user =
@@ -51,6 +52,11 @@ function App() {
             <Route exact path="/my-wishlists" component={Wishlists} />
             <Route exact path="/my-properties" component={MyProperties} />
             <Route exact path="/search/:query" component={SearchResults} />
+            <Route
+              exact
+              path="/properties/:propertytype"
+              component={CategoryResults}
+            />
           </Switch>
         </div>
       </Router>

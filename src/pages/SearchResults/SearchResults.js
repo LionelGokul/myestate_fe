@@ -1,20 +1,22 @@
 import React, { useReducer, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Form from '../../shared/components/FormElements/Form';
 import SearchResultFilter from './Components/SearchResultsFilter';
 import './SearchResults.css';
 import SearchResultsPropertyList from './Components/SearchResultsPropertyList';
-import { SearchResultsReducer } from '../../shared/DataLayer/SearchResultsReducer';
+import {
+  SearchResultsReducer,
+  ACTIONS,
+} from '../../shared/DataLayer/SearchResultsReducer';
 import { useStateValue } from '../../shared/DataLayer/Context';
 import { useAxios } from '../../shared/hooks/useAxios';
+export const initialState = {
+  initialData: [],
+  filteredData: [],
+};
 const SearchResults = ({}) => {
   const [{ query }] = useStateValue();
   console.log(query);
-  const initialState = {
-    initialData: [],
-    filteredData: [],
-  };
 
   const { sendRequest } = useAxios();
   const [state, dispatch] = useReducer(SearchResultsReducer, initialState);
@@ -24,7 +26,7 @@ const SearchResults = ({}) => {
     sendRequest('get', `search/${query}`)
       .then((res) => {
         dispatch({
-          type: 'SEARCHED',
+          type: ACTIONS.SEARCHED,
           payload: res,
         });
 
@@ -38,7 +40,7 @@ const SearchResults = ({}) => {
     console.log(price);
     console.log(data);
     dispatch({
-      type: 'filter',
+      type: ACTIONS.FILTER,
       payload: {
         city: data.city || null,
         type: data.type || null,
