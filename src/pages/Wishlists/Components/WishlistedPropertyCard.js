@@ -76,4 +76,4 @@ const WishlistedPropertyCard = ({ property }) => {
   );
 };
 
-export default WishlistedPropertyCard;
+export default React.memo(WishlistedPropertyCard);

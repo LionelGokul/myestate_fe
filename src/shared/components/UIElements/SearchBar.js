@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { useStateValue } from '../../DataLayer/Context';
 import { ACTIONS } from '../../DataLayer/reducer';
-import { useAxios } from '../../hooks/useAxios';
+
 const SearchBar = (params) => {
   const [query, setQuery] = useState('');
   const [{ propertytype }, dispatch] = useStateValue();
@@ -37,7 +37,6 @@ const SearchBar = (params) => {
           <BsSearch />
         </button>
       </Link>
-      )
     </div>
   );
 };

@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy, useContext } from 'react';
 import { useAxios } from '../../shared/hooks/useAxios';
-import UserForm from './Components/UserForm';
 import Form from '../../shared/components/FormElements/Form';
 import Title from '../../shared/components/UIElements/Title';
 import { useStateValue } from '../../shared/DataLayer/Context';
 import { ACTIONS } from '../../shared/DataLayer/reducer';
-import UserSections from './Components/UserSections';
+import Loader from '../../shared/components/UIElements/Loader';
+import AlertMessageContext from '../../shared/DataLayer/AlertMesageContext';
+
+const UserSections = lazy(() => import('./Components/UserSections'));
+const UserForm = lazy(() => import('./Components/UserForm'));
 
 const User = (props) => {
+  const alertContext = useContext(AlertMessageContext);
   const [{ user }, dispatch] = useStateValue();
   const [profilePic, setProfilePic] = useState(null);
   const { sendRequest } = useAxios();
@@ -42,6 +46,9 @@ const User = (props) => {
             mobile: user.mobile,
           },
         });
+        alertContext.setOpen(true);
+        alertContext.setSuccess(true);
+        alertContext.setMsg('Successfully udated user details');
         props.handleClose();
       })
       .catch((err) => {
@@ -50,7 +57,7 @@ const User = (props) => {
     console.log(data);
   };
   return (
-    <>
+    <Suspense fallback={<Loader />}>
       <div className="cmn_section no_bg">
         <UserSections />
       </div>
@@ -66,7 +73,7 @@ const User = (props) => {
         </Form>
         <div className="margin_top"></div>
       </div>
-    </>
+    </Suspense>
   );
 };
 

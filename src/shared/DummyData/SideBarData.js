@@ -2,14 +2,17 @@ import React from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { HiUserGroup } from 'react-icons/hi';
 import { RiFeedbackLine } from 'react-icons/ri';
-import { GrContact } from 'react-icons/gr';
+import { CgProfile } from 'react-icons/cg';
+import { BsHeart } from 'react-icons/bs';
 
-const SideBarData = [
+import DefaultUserIcon from '../Images/user.svg';
+
+export const SideBarData = [
   {
     title: 'Home',
     path: '/',
-    icon: <AiOutlineHome />,
     cName: 'nav-text',
+    icon: <AiOutlineHome />,
   },
   {
     title: 'About Us',
@@ -19,16 +22,47 @@ const SideBarData = [
   },
   {
     title: 'Feedback',
-    path: '/',
+    path: '/feedback',
     icon: <RiFeedbackLine />,
-    cName: 'nav-text',
-  },
-  {
-    title: 'Contact Us',
-    path: '/',
-    icon: <GrContact />,
     cName: 'nav-text',
   },
 ];
 
-export default SideBarData;
+export const loggedInSideBarData = [
+  {
+    title: 'Home',
+    path: '/',
+    icon: <AiOutlineHome />,
+    cName: 'nav-text',
+  },
+  {
+    title: 'Services',
+    path: '/#services',
+    icon: <HiUserGroup />,
+    cName: 'nav-text',
+    onClick: () => {
+      window.scrollTo(0, document.body.scrollHeight);
+    },
+  },
+  {
+    title: 'Feedback',
+    path: '/#feedback',
+    icon: <RiFeedbackLine />,
+    cName: 'nav-text',
+    onClick: () => {
+      window.scrollTo(0, document.body.scrollHeight);
+    },
+  },
+  {
+    title: 'Profile',
+    path: '/profile',
+    icon: <CgProfile />,
+    cName: 'nav-text',
+  },
+  {
+    title: 'My Wishlists',
+    path: '/my-wishlists',
+    icon: <BsHeart fill="#fff" />,
+    cName: 'nav-text',
+  },
+];

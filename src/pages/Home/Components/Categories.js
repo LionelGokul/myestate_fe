@@ -1,11 +1,5 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAxios } from '../../../shared/hooks/useAxios';
-import { SearchResultsReducer } from '../../../shared/DataLayer/SearchResultsReducer';
-import { useStateValue } from '../../../shared/DataLayer/Context';
-import { ACTIONS } from '../../../shared/DataLayer/reducer';
-import { initialState } from '../../SearchResults/SearchResults';
-import CategoryResults from '../../CategoryView/CategoryResults';
 
 let CategoriesImages = [
   {
@@ -35,36 +29,32 @@ let CategoriesImages = [
 ];
 const Categories = ({}) => {
   return (
-    <>
-      <section className="categories">
-        <div className="categories__type">
-          <div className="categories_types_center">
-            {CategoriesImages.map((categories, id) => {
-              return (
-                <article className="category" key={id}>
-                  <div className="img_container">
-                    <img src={categories.image} alt={categories.name} />
-                    <Link
-                      to={{
-                        pathname: `/properties/${categories.name}`,
-                      }}
-                      className="categories_button"
-                      key={id}
-                    >
-                      View all
-                    </Link>
-                  </div>
-                  <p className="categories_info" key={id}>
-                    {categories.name}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
+    <section className="categories">
+      <div className="categories__type">
+        <div className="categories_types_center">
+          {CategoriesImages.map((categories, id) => {
+            return (
+              <div className="category" key={id}>
+                <div className="img_container">
+                  <img src={categories.image} alt={categories.name} />
+                  <Link
+                    to={{
+                      pathname: `/properties/${categories.name}`,
+                    }}
+                    className="categories_button"
+                    key={id}
+                  >
+                    View all
+                  </Link>
+                </div>
+                <p className="categories_info">{categories.name}</p>
+              </div>
+            );
+          })}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 
-export default Categories;
+export default React.memo(Categories);

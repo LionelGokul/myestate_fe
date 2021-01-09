@@ -37,4 +37,4 @@ const DetailPropertyOverview = ({ property }) => {
   );
 };
 
-export default DetailPropertyOverview;
+export default React.memo(DetailPropertyOverview);
