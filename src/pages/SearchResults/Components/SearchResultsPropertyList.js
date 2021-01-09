@@ -14,7 +14,12 @@ const SearchResultPropertyList = ({ propertyList }) => {
           />
         ) : (
           propertyList.map((property) => {
-            return <SearchResultsPropertyCard property={property} />;
+            return (
+              <SearchResultsPropertyCard
+                property={property}
+                key={property.id}
+              />
+            );
           })
         )
       ) : null}

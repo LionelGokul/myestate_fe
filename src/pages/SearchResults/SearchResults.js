@@ -38,7 +38,7 @@ const SearchResults = ({}) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [query]);
   const onSubmit = (data) => {
     console.log(price);
     console.log(data);
