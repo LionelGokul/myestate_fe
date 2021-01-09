@@ -33,7 +33,10 @@ button,
   cursor: pointer;
   border: 0px;
 }
-
+.categoryResults {
+  width: 80%;
+  margin: auto;
+}
 .cmn_footer {
   background-color: black;
   margin-top: 5%;

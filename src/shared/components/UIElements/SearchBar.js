@@ -6,7 +6,7 @@ import { ACTIONS } from '../../DataLayer/reducer';
 
 const SearchBar = (params) => {
   const [query, setQuery] = useState('');
-  const [{}, dispatch] = useStateValue();
+  const [{ propertytype }, dispatch] = useStateValue();
   const searchQueryHandle = () => {
     dispatch({
       type: ACTIONS.SEARCH,
@@ -14,6 +14,7 @@ const SearchBar = (params) => {
     });
     setQuery(query);
   };
+  console.log(' in searcg', propertytype);
   return (
     <div className="search_container active">
       <input

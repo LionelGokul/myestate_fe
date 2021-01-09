@@ -10,6 +10,7 @@ export const ACTIONS = {
 };
 
 const reducer = (state, action) => {
+  console.log(action);
   switch (action.type) {
     case ACTIONS.ADD_TO_WISHLIST: {
       const newFav = [...state.favList, action.property];

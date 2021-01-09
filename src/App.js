@@ -15,6 +15,7 @@ import AlertMessage from './shared/components/UIElements/AlertMessage';
 import LoaderContext from './shared/DataLayer/LoaderContext';
 import AlertMessageContext from './shared/DataLayer/AlertMesageContext';
 import Footer from './shared/components/UIElements/Footer';
+import CategoryResults from './pages/CategoryView/CategoryResults';
 
 function App() {
   // locader context
@@ -85,6 +86,11 @@ function App() {
                   render={(props) => (
                     <UploadProperty isEdit={true} {...props} />
                   )}
+                />
+                <Route
+                  exact
+                  path="/properties/:propertytype"
+                  component={CategoryResults}
                 />
                 <Route exact path="/my-wishlists" component={Wishlists} />
                 <Route exact path="/my-properties" component={MyProperties} />
