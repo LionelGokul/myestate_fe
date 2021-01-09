@@ -37,19 +37,28 @@ const Navbar = (props) => {
           <Link to="#" className="menu-bars">
             <FaBars onClick={showSideBar} />
           </Link>
-          <Link to="#" className="menu-bars no_decor_links">
+          <Link to="/" className="menu-bars no_decor_links">
             My Estate
           </Link>
           <SearchBar />
           <HeartContainer />
           <LoginSection />
-          <Link to="#" className="menu-bars no_decor_links mobile_none">
-            About
+          <Link
+            to="/#services"
+            onClick={() => {
+              window.scrollTo(0, document.body.scrollHeight);
+            }}
+            className="menu-bars no_decor_links mobile_none"
+          >
+            Services
           </Link>
-          <Link to="#" className="menu-bars no_decor_links mobile_none">
-            Contact Us
-          </Link>
-          <Link to="#" className="menu-bars no_decor_links mobile_none">
+          <Link
+            to="/#feedback"
+            onClick={() => {
+              window.scrollTo(0, document.body.scrollHeight);
+            }}
+            className="menu-bars no_decor_links mobile_none"
+          >
             Feedback
           </Link>
         </div>

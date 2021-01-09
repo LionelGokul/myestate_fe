@@ -5,13 +5,7 @@ import Button from '@material-ui/core/Button';
 
 const FooterElements = () => {
   return (
-    <Grid
-      container
-      direction="row"
-      justify="center"
-      alignItems="center"
-      spacing={2}
-    >
+    <Grid container direction="row" justify="center" alignItems="center">
       <Grid item xs={7}>
         <CustomTextAreaField
           name="feedback"
@@ -21,7 +15,7 @@ const FooterElements = () => {
           required
         />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs={2} style={{ marginLeft: '5%' }}>
         <Button type="submit" variant="contained" color="secondary">
           Submit
         </Button>

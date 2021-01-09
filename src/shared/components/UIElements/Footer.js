@@ -34,13 +34,12 @@ const Footer = () => {
       });
   };
   return (
-    <Grid container className="cmn_footer">
-      <Grid item xs={10}>
+    <Grid container className="cmn_footer" id="footer">
+      <Grid item xs={12} style={{ backgroundColor: 'black' }}>
         <Form onSubmit={onSubmit}>
           <FooterElements />
         </Form>
       </Grid>
-      <Grid item xs={2}></Grid>
     </Grid>
   );
 };
