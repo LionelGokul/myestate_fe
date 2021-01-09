@@ -7,6 +7,8 @@ import Loader from './shared/components/UIElements/Loader';
 import AlertMessage from './shared/components/UIElements/AlertMessage';
 import LoaderContext from './shared/DataLayer/LoaderContext';
 import AlertMessageContext from './shared/DataLayer/AlertMesageContext';
+import Footer from './shared/components/UIElements/Footer';
+import CategoryResults from './pages/CategoryView/CategoryResults';
 import Routing from './Routing';
 
 function App() {
@@ -61,6 +63,7 @@ function App() {
             <div className="cmn_workarea">
               <Routing />
             </div>
+            <Footer />
           </LoaderContext.Provider>
         </AlertMessageContext.Provider>
       </Router>

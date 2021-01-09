@@ -1,15 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, Suspense, lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useStateValue } from './shared/DataLayer/Context';
 import { ACTIONS } from './shared/DataLayer/reducer';
-import PropertyDetailedView from './pages/DetailedView/PropertyDetailedView';
-import Wishlists from './pages/Wishlists/Wishlists';
-import MyProperties from './pages/MyProperties/MyProperties';
-import SearchResults from './pages/SearchResults/SearchResults';
-import Home from './pages/Home/Home';
-import User from './pages/User/User';
-import UploadProperty from './pages/UploadProperty/UploadProperty';
 import AlertMessageContext from './shared/DataLayer/AlertMesageContext';
+import Loader from './shared/components/UIElements/Loader';
+
+const PropertyDetailedView = lazy(() =>
+  import('./pages/DetailedView/PropertyDetailedView'),
+);
+const Wishlists = lazy(() => import('./pages/Wishlists/Wishlists'));
+const MyProperties = lazy(() => import('./pages/MyProperties/MyProperties'));
+const SearchResults = lazy(() => import('./pages/SearchResults/SearchResults'));
+const Home = lazy(() => import('./pages/Home/Home'));
+const User = lazy(() => import('./pages/User/User'));
+const UploadProperty = lazy(() =>
+  import('./pages/UploadProperty/UploadProperty'),
+);
 
 const Routing = () => {
   const [{ user }, dispatch] = useStateValue();
@@ -17,12 +23,14 @@ const Routing = () => {
 
   if (user.id === undefined)
     return (
-      <Switch>
-        <Route path="/" component={Home} exact />
-        <Route exact path="/property/:id" component={PropertyDetailedView} />
-        <Route exact path="/search/:query" component={SearchResults} />
-        <Redirect to="/" />
-      </Switch>
+      <Suspense fallback={<Loader />}>
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route exact path="/property/:id" component={PropertyDetailedView} />
+          <Route exact path="/search/:query" component={SearchResults} />
+          <Redirect to="/" />
+        </Switch>
+      </Suspense>
     );
 
   // validating user session with expiry time
@@ -43,20 +51,27 @@ const Routing = () => {
     }
   }, 5000);
   return (
-    <Switch>
-      <Route path="/" component={Home} exact />
-      <Route exact path="/property/:id" component={PropertyDetailedView} />
-      <Route
-        exact
-        path="/property/:id/edit"
-        render={(props) => <UploadProperty isEdit={true} {...props} />}
-      />
-      <Route path="/profile" component={User} />
-      <Route path="/upload-property" component={UploadProperty} exact />
-      <Route exact path="/my-wishlists" component={Wishlists} />
-      <Route exact path="/my-properties" component={MyProperties} />
-      <Route exact path="/search/:query" component={SearchResults} />
-    </Switch>
+    <Suspense fallback={<Loader />}>
+      <Switch>
+        <Route path="/" component={Home} exact />
+        <Route exact path="/property/:id" component={PropertyDetailedView} />
+        <Route
+          exact
+          path="/property/:id/edit"
+          render={(props) => <UploadProperty isEdit={true} {...props} />}
+        />
+        <Route path="/profile" component={User} />
+        <Route path="/upload-property" component={UploadProperty} exact />
+        <Route exact path="/my-wishlists" component={Wishlists} />
+        <Route exact path="/my-properties" component={MyProperties} />
+        <Route exact path="/search/:query" component={SearchResults} />
+        <Route
+          exact
+          path="/properties/:propertytype"
+          component={CategoryResults}
+        />
+      </Switch>
+    </Suspense>
   );
 };
 
