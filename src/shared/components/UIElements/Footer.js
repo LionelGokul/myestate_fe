@@ -5,6 +5,7 @@ import { useStateValue } from '../../datalayer/Context';
 import Grid from '@material-ui/core/Grid';
 import Form from '../FormElements/Form';
 import FooterElements from './FooterElements';
+import FooterText from './FooterText';
 
 const Footer = () => {
   const { sendRequest } = useAxios();
@@ -33,13 +34,16 @@ const Footer = () => {
       });
   };
   return (
-    <Grid container className="cmn_footer" id="footer">
-      <Grid item xs={12} style={{ backgroundColor: 'black' }}>
-        <Form onSubmit={onSubmit}>
-          <FooterElements />
-        </Form>
+    <>
+      <Grid container className="cmn_footer" id="footer">
+        <Grid item xs={12}>
+          <Form onSubmit={onSubmit}>
+            <FooterElements />
+            <FooterText />
+          </Form>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 };
 

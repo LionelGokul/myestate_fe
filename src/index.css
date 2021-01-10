@@ -11,7 +11,7 @@ html {
 @import url('shared/css/Loader.css');
 @import url('shared/css/SearchBar.css');
 @import url('shared/css/Card.css');
-
+@import url('shared/css/FooterText.css');
 * {
   box-sizing: border-box;
   margin: 0;
