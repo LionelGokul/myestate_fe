@@ -1,6 +1,7 @@
 import { Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
-import { useStateValue } from '../../../shared/DataLayer/Context';
+import { useStateValue } from '../../../shared/datalayer/Context';
 import { useAxios } from '../../../shared/hooks/useAxios';
 import PropertyDetails from './PropertyDetails';
 import PropertyAmenities from './PropertyAmenities';
@@ -18,9 +19,10 @@ import {
   GetInitialValues,
   GetPropertyType,
 } from '../../../shared/services/PropertyServices';
-import AlertMessageContext from '../../../shared/DataLayer/AlertMesageContext';
+import AlertMessageContext from '../../../shared/datalayer/AlertMesageContext';
 
 const UploadPropertyForm = ({ property }) => {
+  const history = useHistory();
   const alertContext = useContext(AlertMessageContext);
   const [{ user }] = useStateValue();
   const defaultImages =
@@ -40,7 +42,6 @@ const UploadPropertyForm = ({ property }) => {
   );
 
   const onSubmit = (data) => {
-    debugger;
     const formData = GetRequestData(
       data,
       propType,
@@ -58,7 +59,7 @@ const UploadPropertyForm = ({ property }) => {
         alertContext.setOpen(true);
         alertContext.setSuccess(true);
         alertContext.setMsg('Successfully uplaoded property');
-        console.log(response);
+        history.goBack();
       })
       .catch((err) => {
         console.log(err);

@@ -5,8 +5,6 @@ import { RiFeedbackLine } from 'react-icons/ri';
 import { CgProfile } from 'react-icons/cg';
 import { BsHeart } from 'react-icons/bs';
 
-import DefaultUserIcon from '../Images/user.svg';
-
 export const SideBarData = [
   {
     title: 'Home',
@@ -15,16 +13,22 @@ export const SideBarData = [
     icon: <AiOutlineHome />,
   },
   {
-    title: 'About Us',
-    path: '/',
+    title: 'Services',
+    path: '/#services',
     icon: <HiUserGroup />,
     cName: 'nav-text',
+    onClick: () => {
+      window.scrollTo(0, document.body.scrollHeight);
+    },
   },
   {
     title: 'Feedback',
     path: '/feedback',
     icon: <RiFeedbackLine />,
     cName: 'nav-text',
+    onClick: () => {
+      window.scrollTo(0, document.body.scrollHeight);
+    },
   },
 ];
 

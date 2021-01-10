@@ -57,7 +57,6 @@ const PropertyDetailedView = () => {
     sendRequest('get', `property/${id}`)
       .then((res) => {
         setProperty(res);
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -66,7 +65,6 @@ const PropertyDetailedView = () => {
   const [tabSelected, setTabSelected] = React.useState(0);
 
   const handleChange = (event, newValue) => {
-    console.log(property);
     setTabSelected(newValue);
   };
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useStateValue } from '../../DataLayer/Context';
+import { useStateValue } from '../../datalayer/Context';
 import Login from '../../components/Modals/Login/Login';
 import SignUp from '../Modals/SignUp/SignUp';
-import { ACTIONS } from '../../../shared/DataLayer/reducer';
+import { ACTIONS } from '../../../shared/datalayer/reducer';
 import LoggedInUserSection from './LoggedInUserSection';
 
 const LoginSection = (props) => {

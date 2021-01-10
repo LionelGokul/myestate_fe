@@ -7,16 +7,21 @@ html {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
-@import url('shared/CSS/Navbar.css');
-@import url('shared/CSS/Loader.css');
-@import url('shared/CSS/SearchBar.css');
-@import url('shared/CSS/Card.css');
+@import url('shared/css/Navbar.css');
+@import url('shared/css/Loader.css');
+@import url('shared/css/SearchBar.css');
+@import url('shared/css/Card.css');
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'Lato', sans-serif;
+}
+
+.search_filters {
+  background-color: white;
+  box-shadow: 5px 6px 7px 1px #a09d9d;
 }
 
 a {
@@ -500,10 +505,17 @@ body {
   .category {
     width: 200px !important;
   }
+
+  .prop_card {
+    margin-top: 5% !important;
+  }
 }
 @media screen and (max-width: 400px) {
   .category {
     width: 120px !important;
+  }
+  .prop_card {
+    margin-top: 6% !important;
   }
 }
 .categories_button {
@@ -560,12 +572,15 @@ body {
 }
 
 .category {
-  width: 400px;
+  width: 300px;
   margin: auto;
-  margin-right: 5%;
-  box-shadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.3);
+  margin-right: 3%;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
   transition: all 0.3s linear;
   flex: none;
+  margin-bottom: 5%;
 }
 .category:hover {
   transform: scale(1.02);

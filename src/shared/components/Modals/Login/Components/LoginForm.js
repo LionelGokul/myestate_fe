@@ -3,10 +3,10 @@ import Grid from '@material-ui/core/Grid';
 import CustomTextField from '../../../../components/FormElements/CustomTextField';
 import { useAxios } from '../../../../hooks/useAxios';
 import Form from '../../../../components/FormElements/Form';
-import { useStateValue } from '../../../../DataLayer/Context';
-import { ACTIONS } from '../../../../DataLayer/reducer';
+import { useStateValue } from '../../../../datalayer/Context';
+import { ACTIONS } from '../../../../datalayer/reducer';
 import FormSubmitSection from '../../../FormElements/FormSubmitSection';
-import AlertMessageContext from '../../../../DataLayer/AlertMesageContext';
+import AlertMessageContext from '../../../../datalayer/AlertMesageContext';
 
 const LoginForm = (props) => {
   const alertContext = useContext(AlertMessageContext);
@@ -47,6 +47,7 @@ const LoginForm = (props) => {
         console.log(err);
       });
   };
+
   return (
     <Form onSubmit={onSubmit}>
       <Grid container spacing={3} direction="column">
@@ -66,6 +67,7 @@ const LoginForm = (props) => {
           <CustomTextField
             id="password"
             name="password"
+            type="password"
             label="Password"
             defaultValue=""
             rules={{
@@ -74,7 +76,11 @@ const LoginForm = (props) => {
           />
         </Grid>
         <Grid item xs>
-          <FormSubmitSection onCancel={() => {}} />
+          <FormSubmitSection
+            onCancel={() => {
+              props.handleClose();
+            }}
+          />
         </Grid>
       </Grid>
     </Form>

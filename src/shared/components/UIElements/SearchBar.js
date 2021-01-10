@@ -1,20 +1,13 @@
 import React, { useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { useStateValue } from '../../DataLayer/Context';
-import { ACTIONS } from '../../DataLayer/reducer';
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');
-  const [{ propertytype }, dispatch] = useStateValue();
   const searchQueryHandle = () => {
-    dispatch({
-      type: ACTIONS.SEARCH,
-      query: query,
-    });
     setQuery(query);
   };
-  console.log(' in searcg', propertytype);
+
   return (
     <div className="search_container active">
       <input

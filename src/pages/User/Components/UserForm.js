@@ -19,8 +19,6 @@ const UserForm = (props) => {
 
   const onFilechange = (e) => {
     saveImage = true;
-    console.log(e.target.files[0].type);
-
     /*Selected files data can be collected here.*/
     if (
       e.target.files[0].type === 'image/jpeg' ||

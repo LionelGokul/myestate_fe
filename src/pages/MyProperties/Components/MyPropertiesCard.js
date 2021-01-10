@@ -16,11 +16,13 @@ const MyPropertiesCard = ({ property }) => {
         spacing={1}
       >
         <Grid item xs style={{ width: '40%' }}>
-          <img
-            className="cmn_card_media"
-            src={property.images[0].url}
-            alt={property.name}
-          />
+          <Link to={`/property/${property.id}`}>
+            <img
+              className="cmn_card_media"
+              src={property.images[0].url}
+              alt={property.name}
+            />
+          </Link>
         </Grid>
         <Grid item xs sm container style={{ height: 200 }}>
           <Grid item xs container direction="column" spacing={2}>

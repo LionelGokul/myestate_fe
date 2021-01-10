@@ -1,16 +1,13 @@
 import React from 'react';
-import SearchResultsPropertyCard from './SearchResultsPropertyCard';
+import SearchResultsPropertyCard from '../../SearchResults/Components/SearchResultsPropertyCard';
 import NoItems from '../../../shared/components/UIElements/NoItems';
 
-const SearchResultPropertyList = ({ propertyList }) => {
+const CategoryResultList = ({ propertyList }) => {
   return (
     <>
       {propertyList !== undefined ? (
         propertyList.length === 0 ? (
-          <NoItems
-            text="Sorry no properties matched your filter. please clear filter and
-              try again."
-          />
+          <NoItems text="Sorry no properties matched. Please try again for a different property type." />
         ) : (
           propertyList.map((property) => {
             return (
@@ -26,4 +23,4 @@ const SearchResultPropertyList = ({ propertyList }) => {
   );
 };
 
-export default SearchResultPropertyList;
+export default CategoryResultList;

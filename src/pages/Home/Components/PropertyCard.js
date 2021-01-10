@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useStateValue } from '../../../shared/DataLayer/Context';
-import FavoriteBorderIcon from '../../../shared/Images/favorite_border-white-18dp.svg';
-import FavoriteIcon from '../../../shared/Images/favorite-white-18dp.svg';
+import { useStateValue } from '../../../shared/datalayer/Context';
+import FavoriteBorderIcon from '../../../shared/images/favorite_border-white-18dp.svg';
+import FavoriteIcon from '../../../shared/images/favorite-white-18dp.svg';
 import Fab from '@material-ui/core/Fab';
 import { useWishList } from '../../../shared/hooks/useWishList';
 
@@ -52,7 +52,7 @@ const PropertyCard = ({ propertyDetails }) => {
           </div>
           <div className="property__details">
             <div className="property__price">
-              <small>$</small>
+              <small>₹</small>
               <strong>{price}</strong>
             </div>
             <div className="property__rating">

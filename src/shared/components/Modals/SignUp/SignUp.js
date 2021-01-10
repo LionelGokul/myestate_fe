@@ -7,11 +7,11 @@ import Grid from '@material-ui/core/Grid';
 import { useAxios } from '../../../hooks/useAxios';
 import Title from '../../../../shared/components/UIElements/Title';
 import SocialLogin from '../Login/Components/SocialLogin';
-import '../../../CSS/SignUp.css';
+import '../../../css/SignUp.css';
 import Form from '../../FormElements/Form';
-import { useStateValue } from '../../../DataLayer/Context';
-import { ACTIONS } from '../../../DataLayer/reducer';
-import AlertMessageContext from '../../../DataLayer/AlertMesageContext';
+import { useStateValue } from '../../../datalayer/Context';
+import { ACTIONS } from '../../../datalayer/reducer';
+import AlertMessageContext from '../../../datalayer/AlertMesageContext';
 
 const SignUp = (props) => {
   const { sendRequest } = useAxios();

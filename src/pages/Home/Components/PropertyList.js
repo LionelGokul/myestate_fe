@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import propertyDatas from '../../../shared/DummyData/PropertyData';
 import PropertyCard from './PropertyCard';
 import Slider from '../../../shared/components/UIElements/Slider';
 import { useAxios } from '../../../shared/hooks/useAxios';

@@ -26,6 +26,7 @@
   margin-bottom: 15px;
   border-radius: 20px;
   transition: transform 0.5s ease-out;
+  background: white;
 }
 
 .prop_img:hover {

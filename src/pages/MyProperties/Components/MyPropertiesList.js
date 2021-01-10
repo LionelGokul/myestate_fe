@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useStateValue } from '../../../shared/DataLayer/Context';
+import { useStateValue } from '../../../shared/datalayer/Context';
 import MyPropertiesCard from './MyPropertiesCard';
 import { useAxios } from '../../../shared/hooks/useAxios';
 import NoItems from '../../../shared/components/UIElements/NoItems';
-import AlertMessageContext from '../../../shared/DataLayer/AlertMesageContext';
+import AlertMessageContext from '../../../shared/datalayer/AlertMesageContext';
 
 const MyPropertiesList = () => {
   const { sendRequest } = useAxios();
@@ -26,8 +26,6 @@ const MyPropertiesList = () => {
         setProperties(response);
       })
       .catch((err) => {
-        alertContext.setOpen(true);
-        alertContext.setMsg(err);
         console.log('err', err);
       });
   }, []);

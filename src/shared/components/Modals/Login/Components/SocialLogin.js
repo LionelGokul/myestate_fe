@@ -12,9 +12,10 @@ const SocialLogin = (props) => {
       justify="center"
       alignItems="center"
     >
-      <Grid item xs>
+      {/* <Grid item xs>
         <FacebookLogin handleClose={props.handleClose} />
       </Grid>
+      */}
       <Grid item xs>
         <GoogleLogin handleClose={props.handleClose} />
       </Grid>

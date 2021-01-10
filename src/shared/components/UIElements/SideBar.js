@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
-import { SideBarData, loggedInSideBarData } from '../../DummyData/SideBarData';
+import { SideBarData, loggedInSideBarData } from '../../dummydata/SideBarData';
 import { NavLink, Link } from 'react-router-dom';
-import { useStateValue } from '../../../shared/DataLayer/Context';
-import { default as UserIcon } from '../../Images/user.svg';
-import { ACTIONS } from '../../../shared/DataLayer/reducer';
+import { useStateValue } from '../../../shared/datalayer/Context';
+import { default as UserIcon } from '../../images/user.svg';
+import { ACTIONS } from '../../../shared/datalayer/reducer';
 
 const SideBar = (props) => {
   const wrapperRef = useRef(null);

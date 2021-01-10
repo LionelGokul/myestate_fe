@@ -38,9 +38,7 @@ const Categories = ({}) => {
                 <div className="img_container">
                   <img src={categories.image} alt={categories.name} />
                   <Link
-                    to={{
-                      pathname: `/properties/${categories.name}`,
-                    }}
+                    to={`/properties/${categories.name}`}
                     className="categories_button"
                     key={id}
                   >
@@ -57,4 +55,4 @@ const Categories = ({}) => {
   );
 };
 
-export default React.memo(Categories);
+export default Categories;
