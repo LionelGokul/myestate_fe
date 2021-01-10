@@ -14,7 +14,7 @@ export const SideBarData = [
   },
   {
     title: 'Services',
-    path: '/#services',
+    path: '#',
     icon: <HiUserGroup />,
     cName: 'nav-text',
     onClick: () => {
@@ -23,7 +23,7 @@ export const SideBarData = [
   },
   {
     title: 'Feedback',
-    path: '/feedback',
+    path: '#',
     icon: <RiFeedbackLine />,
     cName: 'nav-text',
     onClick: () => {
@@ -41,7 +41,7 @@ export const loggedInSideBarData = [
   },
   {
     title: 'Services',
-    path: '/#services',
+    path: '#',
     icon: <HiUserGroup />,
     cName: 'nav-text',
     onClick: () => {
@@ -50,7 +50,7 @@ export const loggedInSideBarData = [
   },
   {
     title: 'Feedback',
-    path: '/#feedback',
+    path: '#',
     icon: <RiFeedbackLine />,
     cName: 'nav-text',
     onClick: () => {
