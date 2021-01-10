@@ -15,7 +15,7 @@ export const useAxios = () => {
       method: method,
       url: `http://127.0.0.1:5000/${url}`,
       data: data,
-      headers: { 'Access-Control-Allow-Origin': 'http://localhost:3000/' },
+      headers: headers,
     };
     return new Promise((resolve, reject) => {
       return axios(config)
