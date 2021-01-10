@@ -67,6 +67,7 @@ const Routing = () => {
           path="/property/:id/edit"
           render={(props) => <UploadProperty isEdit={true} {...props} />}
         />
+        <Route exact path="/search/:query" component={SearchResults} />
         <Route path="/profile" component={User} />
         <Route path="/upload-property" component={UploadProperty} exact />
         <Route exact path="/my-wishlists" component={Wishlists} />
