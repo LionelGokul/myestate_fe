@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 const UserSection = (props) => {
   return (
-    <Paper className="cmn_block" elevation={3} key={props.title}>
-      <Link to={props.link}>
+    <Link to={props.link}>
+      <Paper className="cmn_block" elevation={3} key={props.title}>
         <span>{props.title}</span>
         {props.icon}
-      </Link>
-    </Paper>
+      </Paper>
+    </Link>
   );
 };
 

@@ -42,28 +42,34 @@ const UploadPropertyForm = ({ property }) => {
   );
 
   const onSubmit = (data) => {
-    const formData = GetRequestData(
-      data,
-      propType,
-      files,
-      user.id,
-      sell,
-      property === undefined ? [] : property.images,
-    );
-    const url =
-      property !== undefined ? `property/${property.id}` : `properties`;
-    sendRequest('post', url, formData, {
-      'content-type': 'multipart/form-data',
-    })
-      .then((response) => {
-        alertContext.setOpen(true);
-        alertContext.setSuccess(true);
-        alertContext.setMsg('Successfully uplaoded property');
-        history.goBack();
+    if (files.length > 0) {
+      const formData = GetRequestData(
+        data,
+        propType,
+        files,
+        user.id,
+        sell,
+        property === undefined ? [] : property.images,
+      );
+      const url =
+        property !== undefined ? `property/${property.id}` : `properties`;
+      sendRequest('post', url, formData, {
+        'content-type': 'multipart/form-data',
       })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((response) => {
+          alertContext.setOpen(true);
+          alertContext.setSuccess(true);
+          alertContext.setMsg('Successfully uplaoded property');
+          history.goBack();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      alertContext.setOpen(true);
+      alertContext.setSuccess(false);
+      alertContext.setMsg('Property must have atleast one image.');
+    }
   };
   const onCancel = () => {};
 

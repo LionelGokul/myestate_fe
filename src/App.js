@@ -12,7 +12,7 @@ import Routing from './Routing';
 
 function App() {
   // locader context
-  const [loader, setLoader] = useState(true);
+  const [loader, setLoader] = useState(null);
 
   //alert message context
   const [open, setOpen] = useState(false);

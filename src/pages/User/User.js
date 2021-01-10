@@ -48,7 +48,7 @@ const User = (props) => {
         });
         alertContext.setOpen(true);
         alertContext.setSuccess(true);
-        alertContext.setMsg('Successfully udated user details');
+        alertContext.setMsg('Successfully updated user details');
         props.handleClose();
       })
       .catch((err) => {
