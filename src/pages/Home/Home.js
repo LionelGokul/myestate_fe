@@ -15,8 +15,10 @@ const Home = () => {
       <div className="margin_top" />
       <div className="margin_top" />
       <div className="cmn_section">
-        <Title title="Featured Properties" />
-        <PropertyList />
+        <Suspense fallback={<Loader />}>
+          <Title title="Featured Properties" />
+          <PropertyList />
+        </Suspense>
       </div>
       <Services />
     </Suspense>

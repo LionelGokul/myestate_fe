@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useStateValue } from '../../DataLayer/Context';
 import { ACTIONS } from '../../DataLayer/reducer';
 
-const SearchBar = (params) => {
+const SearchBar = () => {
   const [query, setQuery] = useState('');
   const [{ propertytype }, dispatch] = useStateValue();
   const searchQueryHandle = () => {

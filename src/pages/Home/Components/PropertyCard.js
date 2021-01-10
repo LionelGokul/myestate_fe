@@ -9,13 +9,16 @@ import { useWishList } from '../../../shared/hooks/useWishList';
 const PropertyCard = ({ propertyDetails }) => {
   const {
     id,
-    type,
-    pictures,
-    details: { price },
-    address: { pincode, city, state, street },
+    propertyType,
+    images,
+    pincode,
+    city,
+    street,
+    price,
+    state,
   } = propertyDetails;
   const { addItem, removeItem } = useWishList();
-  const [{ favList, user }] = useStateValue();
+  const [{ favList }] = useStateValue();
   const [ifwishListed, setIfwishListed] = useState(
     favList.find((elem) => elem.id === id) && true,
   );
@@ -36,7 +39,7 @@ const PropertyCard = ({ propertyDetails }) => {
       <div className="property">
         <Link to={`/property/${id}`} idofitem={id}>
           <img
-            src={pictures[0]}
+            src={images[0].url}
             alt={propertyDetails.name}
             className="prop_img"
           />
@@ -53,7 +56,7 @@ const PropertyCard = ({ propertyDetails }) => {
               <strong>{price}</strong>
             </div>
             <div className="property__rating">
-              <strong>Type: {type}</strong>
+              <strong>Type: {propertyType}</strong>
             </div>
           </div>
         </div>
