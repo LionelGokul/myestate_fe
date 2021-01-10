@@ -64,10 +64,8 @@ const SideBar = (props) => {
                 );
               return (
                 <li key={index} className={item.cName} onClick={item.onClick}>
-                  <NavLink to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </NavLink>
+                  {item.icon}
+                  <span>{item.title}</span>
                 </li>
               );
             })
@@ -83,10 +81,8 @@ const SideBar = (props) => {
                 );
               return (
                 <li key={index} className={item.cName} onClick={item.onClick}>
-                  <NavLink to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </NavLink>
+                  {item.icon}
+                  <span>{item.title}</span>
                 </li>
               );
             })}
