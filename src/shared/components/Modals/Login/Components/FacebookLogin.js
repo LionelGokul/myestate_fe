@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactFacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import FacebookLogo from '../../../../../shared/Images/facebookLogo.png';
-import { useStateValue } from '../../../../DataLayer/Context';
-import { ACTIONS } from '../../../../DataLayer/reducer';
+import FacebookLogo from '../../../../images/facebookLogo.png';
+import { useStateValue } from '../../../../datalayer/Context';
+import { ACTIONS } from '../../../../datalayer/reducer';
 
 const FacebookLogin = (props) => {
   const [{}, dispatch] = useStateValue();
@@ -12,8 +12,6 @@ const FacebookLogin = (props) => {
     if ('status' in response) {
       return;
     }
-    console.log(response);
-    debugger;
     const userData = {
       name: response.name,
       email: response.email,
@@ -21,7 +19,6 @@ const FacebookLogin = (props) => {
       facebookId: response.userID,
       isFromFacebook: true,
     };
-    console.log(userData);
     props.handleClose();
   };
 

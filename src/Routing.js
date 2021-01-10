@@ -1,12 +1,12 @@
 import React, { useContext, Suspense, lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { useStateValue } from './shared/DataLayer/Context';
-import { ACTIONS } from './shared/DataLayer/reducer';
-import AlertMessageContext from './shared/DataLayer/AlertMesageContext';
+import { useStateValue } from './shared/datalayer/Context';
+import { ACTIONS } from './shared/datalayer/reducer';
+import AlertMessageContext from './shared/datalayer/AlertMesageContext';
 import Loader from './shared/components/UIElements/Loader';
 
 const PropertyDetailedView = lazy(() =>
-  import('./pages/DetailedView/PropertyDetailedView'),
+  import('./pages/PropertyDetailedView/PropertyDetailedView'),
 );
 const Wishlists = lazy(() => import('./pages/Wishlists/Wishlists'));
 const MyProperties = lazy(() => import('./pages/MyProperties/MyProperties'));
@@ -15,6 +15,9 @@ const Home = lazy(() => import('./pages/Home/Home'));
 const User = lazy(() => import('./pages/User/User'));
 const UploadProperty = lazy(() =>
   import('./pages/UploadProperty/UploadProperty'),
+);
+const CategoryResults = lazy(() =>
+  import('./pages/CategoryResults/CategoryResults'),
 );
 
 const Routing = () => {
@@ -28,6 +31,11 @@ const Routing = () => {
           <Route path="/" component={Home} exact />
           <Route exact path="/property/:id" component={PropertyDetailedView} />
           <Route exact path="/search/:query" component={SearchResults} />
+          <Route
+            exact
+            path="/properties/:propertytype"
+            component={CategoryResults}
+          />
           <Redirect to="/" />
         </Switch>
       </Suspense>
@@ -38,7 +46,6 @@ const Routing = () => {
     if (user.id !== undefined) {
       let current = new Date();
       let expiry = JSON.parse(localStorage.getItem('me_exp'));
-      console.log(new Date(expiry));
       if (current > new Date(expiry)) {
         setOpen(true);
         setSuccess(false);
@@ -64,12 +71,6 @@ const Routing = () => {
         <Route path="/upload-property" component={UploadProperty} exact />
         <Route exact path="/my-wishlists" component={Wishlists} />
         <Route exact path="/my-properties" component={MyProperties} />
-        <Route exact path="/search/:query" component={SearchResults} />
-        <Route
-          exact
-          path="/properties/:propertytype"
-          component={CategoryResults}
-        />
       </Switch>
     </Suspense>
   );

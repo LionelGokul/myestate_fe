@@ -6,7 +6,7 @@ import { GrLogout } from 'react-icons/gr';
 import { CgProfile } from 'react-icons/cg';
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
-import DefaultUserIcon from '../../Images/user.svg';
+import DefaultUserIcon from '../../images/user.svg';
 
 const LoggedInUserSection = ({ user, dispatch, ACTIONS }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -23,6 +23,7 @@ const LoggedInUserSection = ({ user, dispatch, ACTIONS }) => {
     dispatch({
       type: ACTIONS.SIGN_OUT,
     });
+    window.location.reload();
   };
 
   return (

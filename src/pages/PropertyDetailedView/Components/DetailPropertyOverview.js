@@ -1,6 +1,5 @@
 import React from 'react';
 import Title from '../../../shared/components/UIElements/Title';
-import propertyData from '../../../shared/DummyData/PropertyData';
 
 const DetailPropertyOverview = ({ property }) => {
   return (
@@ -18,7 +17,7 @@ const DetailPropertyOverview = ({ property }) => {
         <div className="about">
           <Title title="About" sub={true}></Title>
           <br></br>
-          {propertyData[0].description}
+          {property.description}
         </div>
 
         <div className="price">{property.price} $</div>

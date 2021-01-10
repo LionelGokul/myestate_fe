@@ -5,25 +5,19 @@ import { FaShuttleVan, FaBeer, FaAward, FaHandsHelping } from 'react-icons/fa';
 let services = [
   {
     icon: <FaAward />,
-    title: 'Freebies',
+    title: 'Buy',
     info:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?',
   },
   {
     icon: <FaHandsHelping />,
-    title: 'Refer and Earn',
+    title: 'Rent',
     info:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?',
   },
   {
     icon: <FaShuttleVan />,
-    title: 'Free Installation',
-    info:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?',
-  },
-  {
-    icon: <FaBeer />,
-    title: 'Cost Free HouseWarming Party',
+    title: 'Sell',
     info:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?',
   },

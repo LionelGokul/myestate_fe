@@ -5,8 +5,7 @@ import CustomAutoComplete from '../../../shared/components/FormElements/CustomAu
 import FormSubmitSection from '../../../shared/components/FormElements/FormSubmitSection';
 
 const cities = ['Chennai', 'Arrakonam', 'Banglore', 'Hyderabad'];
-const propertyTypes = ['Land', 'Appartment', 'House', 'Villa'];
-const SearchResultFilter = ({ price, setPrice, onClear }) => {
+const CatgeoryResultsFilter = ({ price, setPrice, onClear }) => {
   const priceLabelFormat = (value) => {
     if (value === 100000)
       return <div className="cmn_slider_label">1 lakh+</div>;
@@ -26,7 +25,7 @@ const SearchResultFilter = ({ price, setPrice, onClear }) => {
         style={{ width: '95%', margin: 'auto', borderRadius: 5 }}
         spacing={3}
       >
-        <Grid item xs={4}>
+        <Grid item xs={6}>
           <CustomAutoComplete
             name="city"
             id="city"
@@ -36,17 +35,7 @@ const SearchResultFilter = ({ price, setPrice, onClear }) => {
             multiple
           />
         </Grid>
-        <Grid item xs={4}>
-          <CustomAutoComplete
-            name="type"
-            id="type"
-            defaultValue={[]}
-            label="Type"
-            options={['buy', 'rent']}
-            multiple
-          />
-        </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={6}>
           <CustomSlider
             name="price"
             id="price"
@@ -69,11 +58,11 @@ const SearchResultFilter = ({ price, setPrice, onClear }) => {
       >
         <Grid item xs={6}>
           <CustomAutoComplete
-            name="property_type"
-            id="property_type"
-            label="Property Type"
+            name="type"
+            id="type"
             defaultValue={[]}
-            options={propertyTypes}
+            label="Type"
+            options={['buy', 'rent']}
             multiple
           />
         </Grid>
@@ -89,4 +78,4 @@ const SearchResultFilter = ({ price, setPrice, onClear }) => {
   );
 };
 
-export default SearchResultFilter;
+export default CatgeoryResultsFilter;

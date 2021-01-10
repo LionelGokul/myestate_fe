@@ -2,10 +2,10 @@ import React, { useState, Suspense, lazy, useContext } from 'react';
 import { useAxios } from '../../shared/hooks/useAxios';
 import Form from '../../shared/components/FormElements/Form';
 import Title from '../../shared/components/UIElements/Title';
-import { useStateValue } from '../../shared/DataLayer/Context';
-import { ACTIONS } from '../../shared/DataLayer/reducer';
+import { useStateValue } from '../../shared/datalayer/Context';
+import { ACTIONS } from '../../shared/datalayer/reducer';
 import Loader from '../../shared/components/UIElements/Loader';
-import AlertMessageContext from '../../shared/DataLayer/AlertMesageContext';
+import AlertMessageContext from '../../shared/datalayer/AlertMesageContext';
 
 const UserSections = lazy(() => import('./Components/UserSections'));
 const UserForm = lazy(() => import('./Components/UserForm'));
@@ -54,7 +54,6 @@ const User = (props) => {
       .catch((err) => {
         console.log(err);
       });
-    console.log(data);
   };
   return (
     <Suspense fallback={<Loader />}>

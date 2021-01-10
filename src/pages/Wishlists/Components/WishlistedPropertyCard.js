@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
-import { useStateValue } from '../../../shared/DataLayer/Context';
-import { ACTIONS } from '../../../shared/DataLayer/reducer';
+import { useStateValue } from '../../../shared/datalayer/Context';
+import { ACTIONS } from '../../../shared/datalayer/reducer';
 import Typography from '@material-ui/core/Typography';
 import { IoMdClose } from 'react-icons/io';
 import Fab from '@material-ui/core/Fab';
@@ -15,7 +16,6 @@ const WishlistedPropertyCard = ({ property }) => {
       propertyID: id,
     });
   };
-  debugger;
 
   return (
     <Grid item xs={12} className="prop_card">
@@ -27,11 +27,13 @@ const WishlistedPropertyCard = ({ property }) => {
         spacing={1}
       >
         <Grid item xs style={{ width: '40%' }}>
-          <img
-            className="cmn_card_media"
-            src={property.images[0].url}
-            alt={property.name}
-          />
+          <Link to={`/property/${property.id}`}>
+            <img
+              className="cmn_card_media"
+              src={property.images[0].url}
+              alt={property.name}
+            />
+          </Link>
         </Grid>
         <Grid item xs sm container style={{ height: 200 }}>
           <Grid item xs container direction="column" spacing={2}>

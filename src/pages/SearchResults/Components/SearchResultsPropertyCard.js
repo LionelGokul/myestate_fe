@@ -1,74 +1,32 @@
 import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
-import { useStateValue } from '../../../shared/DataLayer/Context';
-import { ACTIONS } from '../../../shared/DataLayer/reducer';
-import FavoriteBorderIcon from '../../../shared/Images/favorite_border-white-18dp.svg';
-import FavoriteIcon from '../../../shared/Images/favorite-white-18dp.svg';
+import { useStateValue } from '../../../shared/datalayer/Context';
+import FavoriteBorderIcon from '../../../shared/images/favorite_border-white-18dp.svg';
+import FavoriteIcon from '../../../shared/images/favorite-white-18dp.svg';
 import Fab from '@material-ui/core/Fab';
-import { useAxios } from '../../../shared/hooks/useAxios';
+import { useWishList } from '../../../shared/hooks/useWishList';
 
 const SearchResultsPropertyCard = ({ property }) => {
-  const [{ favList, user }, dispatch] = useStateValue();
-  const { sendRequest } = useAxios();
+  const [{ favList }] = useStateValue();
+  const { addItem, removeItem } = useWishList();
   const [ifwishListed, setIfwishListed] = useState(
     favList.find((elem) => elem.id === property.id) && true,
   );
   const addToWishlist = async () => {
-    sendRequest(
-      'post',
-      'wishlist',
-      {
-        propertyId: property.id,
-        userId: user.id,
-      },
-      {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    )
-      .then(() => {
-        dispatch({
-          type: ACTIONS.ADD_TO_WISHLIST,
-          property: property,
-          user: user,
-        });
-        setIfwishListed(true);
-        console.log('user', user);
-      })
-      .catch((err) => {
-        console.log('err', err);
-      });
+    addItem(property);
   };
 
   const removeFromWishlist = () => {
-    sendRequest(
-      'delete',
-      'removewishlist',
-      {
-        propertyId: property.id,
-        userId: user.id,
-      },
-      {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    )
-      .then(() => {
-        dispatch({
-          type: ACTIONS.REMOVE_FROM_WISHLIST,
-          propertyID: property.id,
-        });
-        setIfwishListed(false);
-      })
-      .catch((err) => {
-        console.log('err', err);
-      });
+    removeItem(property);
   };
+
   return (
-    <Grid item xs={12} className="prop_card">
+    <Grid item xs={12}>
       <Grid
         container
+        className="prop_card"
         direction="row"
         justify="center"
         alignItems="center"
@@ -76,11 +34,13 @@ const SearchResultsPropertyCard = ({ property }) => {
         style={{ height: '100%', padding: 5 }}
       >
         <Grid item xs style={{ width: '40%' }}>
-          <img
-            className="cmn_card_media"
-            src={property.images[0].url}
-            alt={property.name}
-          />
+          <Link to={`/property/${property.id}`}>
+            <img
+              className="cmn_card_media"
+              src={property.images[0].url}
+              alt={property.name}
+            />
+          </Link>
         </Grid>
         <Grid item xs sm container style={{ height: 200 }}>
           <Grid item xs container direction="column" spacing={2}>

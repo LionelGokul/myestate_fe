@@ -19,7 +19,6 @@ const UploadProperty = (props) => {
       sendRequest('get', `property/${id}`)
         .then((res) => {
           setProperty(res);
-          console.log(res);
         })
         .catch((err) => {
           console.log(err);

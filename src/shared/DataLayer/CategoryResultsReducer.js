@@ -1,7 +1,5 @@
 export const ACTIONS = {
   FILTER: 'FILTER_DATA',
-  SET_DATA: 'SET_DATA',
-  CLEAR_FILTER: 'CLEAR_FILTER',
 };
 
 export const SearchResultsReducer = (state, action) => {
@@ -13,7 +11,7 @@ export const SearchResultsReducer = (state, action) => {
       // city filter
       if (filter.city.length !== 0) {
         filteredData = filteredData.filter((val) =>
-          filter.city.includes(val.city),
+          filter.city.includes(val.address.city),
         );
       }
 
@@ -21,13 +19,9 @@ export const SearchResultsReducer = (state, action) => {
       if (filter.type.length !== 0) {
         if (filter.type.length !== 2 || filter.type.length !== 0) {
           if (filter.type[0] === 'rent') {
-            filteredData = filteredData.filter(
-              (val) => val.propertyRooms !== null,
-            );
+            filteredData = filteredData.filter((val) => val.rooms !== null);
           } else {
-            filteredData = filteredData.filter(
-              (val) => val.propertyRooms === null,
-            );
+            filteredData = filteredData.filter((val) => val.rooms === null);
           }
         }
       }
@@ -35,14 +29,16 @@ export const SearchResultsReducer = (state, action) => {
       // type filter
       if (filter.price !== null) {
         filteredData = filteredData.filter(
-          (val) => val.price > filter.price[0] && val.price < filter.price[1],
+          (val) =>
+            val.details.price > filter.price[0] &&
+            val.details.price < filter.price[1],
         );
       }
 
       // property type
-      if (filter.propType && filter.propType.length !== 0) {
+      if (filter.propType.length !== 0) {
         filteredData = filteredData.filter((val) =>
-          filter.propType.includes(val.propertyType),
+          filter.propType.includes(val.type),
         );
       }
 
@@ -51,20 +47,6 @@ export const SearchResultsReducer = (state, action) => {
         filteredData: filteredData,
       };
     }
-    case ACTIONS.SET_DATA: {
-      return {
-        filteredData: action.payload,
-        initialData: action.payload,
-      };
-    }
-
-    case ACTIONS.CLEAR_FILTER: {
-      return {
-        ...state,
-        filteredData: state.initialData,
-      };
-    }
-
     default:
       return { ...state };
   }

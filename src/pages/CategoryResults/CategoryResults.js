@@ -1,30 +1,31 @@
-import React, { useReducer, useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useReducer, Suspense, lazy } from 'react';
 import { useParams } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
-import Form from '../../shared/components/FormElements/Form';
-import SearchResultFilter from './Components/SearchResultsFilter';
-import Loader from '../../shared/components/UIElements/Loader';
+import { useAxios } from '../../shared/hooks/useAxios';
+import CategoryResultList from './Components/CategoryResultList';
 import {
   SearchResultsReducer,
   ACTIONS,
 } from '../../shared/datalayer/SearchResultsReducer';
-import { useAxios } from '../../shared/hooks/useAxios';
-const SearchResultsPropertyList = lazy(() =>
-  import('./Components/SearchResultsPropertyList'),
+import Grid from '@material-ui/core/Grid';
+import Form from '../../shared/components/FormElements/Form';
+import Loader from '../../shared/components/UIElements/Loader';
+
+const CategoryResultsFilter = lazy(() =>
+  import('./Components/CategoryResultsFilter'),
 );
 
-const SearchResults = ({}) => {
-  const { query } = useParams();
+const CategoryResults = () => {
   const { sendRequest } = useAxios();
+  const { propertytype } = useParams();
+  const [price, setPrice] = useState([0, 100000]);
+
   const initialState = {
     initialData: [],
     filteredData: [],
   };
   const [state, dispatch] = useReducer(SearchResultsReducer, initialState);
-  const [price, setPrice] = useState([0, 100000]);
-
   useEffect(() => {
-    sendRequest('get', `search/${query}`)
+    sendRequest('get', `properties/${propertytype}`)
       .then((res) => {
         dispatch({
           type: ACTIONS.SET_DATA,
@@ -54,7 +55,6 @@ const SearchResults = ({}) => {
       type: ACTIONS.CLEAR_FILTER,
     });
   };
-
   return (
     <Suspense fallback={<Loader />}>
       <Grid
@@ -71,7 +71,7 @@ const SearchResults = ({}) => {
           style={{ width: '100%', margin: 'auto', borderRadius: 5 }}
         >
           <Form onSubmit={onSubmit}>
-            <SearchResultFilter
+            <CategoryResultsFilter
               price={price}
               setPrice={setPrice}
               onClear={onClear}
@@ -83,11 +83,11 @@ const SearchResults = ({}) => {
           xs
           style={{ width: '100%', margin: 'auto', borderRadius: 5 }}
         >
-          <SearchResultsPropertyList propertyList={state.filteredData} />
+          <CategoryResultList propertyList={state.filteredData} />
         </Grid>
       </Grid>
     </Suspense>
   );
 };
 
-export default SearchResults;
+export default CategoryResults;

@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import axios from 'axios';
 import { useCallback, useState } from 'react';
-import LoaderContext from '../DataLayer/LoaderContext';
-import AlertMessageContext from '../DataLayer/AlertMesageContext';
+import LoaderContext from '../datalayer/LoaderContext';
+import AlertMessageContext from '../datalayer/AlertMesageContext';
 
 export const useAxios = () => {
   const [error, setError] = useState('');
@@ -15,7 +15,7 @@ export const useAxios = () => {
       method: method,
       url: `http://127.0.0.1:5000/${url}`,
       data: data,
-      headers: headers,
+      headers: { 'Access-Control-Allow-Origin': 'http://localhost:3000/' },
     };
     return new Promise((resolve, reject) => {
       return axios(config)
@@ -27,7 +27,7 @@ export const useAxios = () => {
           setLoader(false);
           alertContext.setOpen(true);
           alertContext.setSuccess(false);
-          alertContext.setMsg(err.statusText);
+          alertContext.setMsg(err.message || err.statusText);
           return reject(err.response);
         });
     });
