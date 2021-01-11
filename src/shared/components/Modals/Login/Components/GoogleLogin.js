@@ -50,7 +50,7 @@ const GoogleLogin = (props) => {
 
   return (
     <ReactGoogleLogin
-      clientId="693936295463-f8lnb74ajf1dioji55utvm9psc096brb.apps.googleusercontent.com"
+      clientId="616969578716-n1jjnecfuv98jcdec3ih7baevu44arcv.apps.googleusercontent.com"
       onSuccess={responseGoogle}
       onFailure={responseGoogle}
       render={(renderProps) => (
