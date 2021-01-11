@@ -16,10 +16,12 @@ const SearchResultsPropertyCard = ({ property }) => {
   );
   const addToWishlist = async () => {
     addItem(property);
+    setIfwishListed(true);
   };
 
   const removeFromWishlist = () => {
     removeItem(property);
+    setIfwishListed(false);
   };
 
   return (

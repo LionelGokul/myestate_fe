@@ -71,7 +71,12 @@ const Routing = () => {
         <Route path="/profile" component={User} />
         <Route path="/upload-property" component={UploadProperty} exact />
         <Route exact path="/my-wishlists" component={Wishlists} />
-        <Route exact path="/my-properties" component={MyProperties} />
+        <Route exact path="/my-properties" component={MyProperties} />.{' '}
+        <Route
+          exact
+          path="/properties/:propertytype"
+          component={CategoryResults}
+        />
       </Switch>
     </Suspense>
   );
