@@ -19,58 +19,63 @@ export const useWishList = () => {
     return true;
   };
 
-  const addItem = useCallback((property) => {
-    if (validateLogin()) {
-      sendRequest(
-        'post',
-        'wishlist',
-        {
-          propertyId: property.id,
-          userId: user.id,
-        },
-        {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      )
-        .then(() => {
-          dispatch({
-            type: ACTIONS.ADD_TO_WISHLIST,
-            property: property,
-            user: user,
+  const addItem = useCallback(
+    (property) => {
+      if (validateLogin()) {
+        sendRequest(
+          'post',
+          'wishlist',
+          {
+            propertyId: property.id,
+            userId: user.id,
+          },
+          {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+        )
+          .then(() => {
+            dispatch({
+              type: ACTIONS.ADD_TO_WISHLIST,
+              property: property,
+            });
+          })
+          .catch((err) => {
+            console.log('err', err);
           });
-        })
-        .catch((err) => {
-          console.log('err', err);
-        });
-    }
-  }, []);
+      }
+    },
+    [user],
+  );
 
-  const removeItem = useCallback((property) => {
-    if (validateLogin()) {
-      sendRequest(
-        'delete',
-        'removewishlist',
-        {
-          propertyId: property.id,
-          userId: user.id,
-        },
-        {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      )
-        .then(() => {
-          dispatch({
-            type: ACTIONS.REMOVE_FROM_WISHLIST,
-            propertyID: property.id,
+  const removeItem = useCallback(
+    (property) => {
+      if (validateLogin()) {
+        sendRequest(
+          'delete',
+          'removewishlist',
+          {
+            propertyId: property.id,
+            userId: user.id,
+          },
+          {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+        )
+          .then(() => {
+            dispatch({
+              type: ACTIONS.REMOVE_FROM_WISHLIST,
+              propertyID: property.id,
+            });
+          })
+          .catch((err) => {
+            console.log('err', err);
           });
-        })
-        .catch((err) => {
-          console.log('err', err);
-        });
-    }
-  }, []);
+      }
+    },
+    [user],
+  );
 
   return { addItem, removeItem };
 };
