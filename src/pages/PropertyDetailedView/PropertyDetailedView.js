@@ -1,6 +1,5 @@
 import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { useParams } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
 import { useAxios } from '../../shared/hooks/useAxios';
 import Title from '../../shared/components/UIElements/Title';
 import { Tab, Tabs } from '@material-ui/core';
