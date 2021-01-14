@@ -1,20 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
-import { useStateValue } from '../../../shared/datalayer/Context';
-import { ACTIONS } from '../../../shared/datalayer/reducer';
+import { useWishList } from '../../../shared/hooks/useWishList';
 import Typography from '@material-ui/core/Typography';
 import { IoMdClose } from 'react-icons/io';
 import Fab from '@material-ui/core/Fab';
 
 const WishlistedPropertyCard = ({ property }) => {
-  const [{}, dispatch] = useStateValue();
+  const { removeItem } = useWishList();
 
   const removeFromWishlist = (id) => {
-    dispatch({
-      type: ACTIONS.REMOVE_FROM_WISHLIST,
-      propertyID: id,
-    });
+    removeItem(property);
   };
 
   return (

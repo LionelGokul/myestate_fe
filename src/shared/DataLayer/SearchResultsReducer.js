@@ -9,6 +9,7 @@ export const SearchResultsReducer = (state, action) => {
     case ACTIONS.FILTER: {
       let filteredData = state.initialData;
       const filter = action.payload;
+      debugger;
 
       // city filter
       if (filter.city.length !== 0) {
@@ -33,10 +34,20 @@ export const SearchResultsReducer = (state, action) => {
       }
 
       // type filter
-      if (filter.price !== null) {
-        filteredData = filteredData.filter(
-          (val) => val.price > filter.price[0] && val.price < filter.price[1],
-        );
+      if (filter.price[0] !== 0 || filter.price[1] !== 100000) {
+        if (filter.price[0] !== 0 && filter.price[1] !== 100000) {
+          filteredData = filteredData.filter(
+            (val) => val.price > filter.price[0] && val.price < filter.price[1],
+          );
+        } else if (filter.price[0] !== 0) {
+          filteredData = filteredData.filter(
+            (val) => val.price > filter.price[0],
+          );
+        } else {
+          filteredData = filteredData.filter(
+            (val) => val.price < filter.price[1],
+          );
+        }
       }
 
       // property type

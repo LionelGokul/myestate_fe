@@ -34,7 +34,7 @@ const SearchResults = ({}) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [query]);
 
   const onSubmit = (data) => {
     dispatch({
