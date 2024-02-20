@@ -3,10 +3,10 @@ import Grid from '@material-ui/core/Grid';
 import CustomTextField from '../../../../components/FormElements/CustomTextField';
 import { useAxios } from '../../../../hooks/useAxios';
 import Form from '../../../../components/FormElements/Form';
-import { useStateValue } from '../../../../datalayer/Context';
-import { ACTIONS } from '../../../../datalayer/reducer';
+import { useStateValue } from '../../../../DataLayer/Context';
+import { ACTIONS } from '../../../../DataLayer/reducer';
 import FormSubmitSection from '../../../FormElements/FormSubmitSection';
-import AlertMessageContext from '../../../../datalayer/AlertMesageContext';
+import AlertMessageContext from '../../../../DataLayer/AlertMesageContext';
 
 const LoginForm = (props) => {
   const alertContext = useContext(AlertMessageContext);

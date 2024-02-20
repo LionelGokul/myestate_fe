@@ -1,8 +1,8 @@
 import React, { useContext, Suspense, lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { useStateValue } from './shared/datalayer/Context';
-import { ACTIONS } from './shared/datalayer/reducer';
-import AlertMessageContext from './shared/datalayer/AlertMesageContext';
+import { useStateValue } from './shared/DataLayer/Context';
+import { ACTIONS } from './shared/DataLayer/reducer';
+import AlertMessageContext from './shared/DataLayer/AlertMesageContext';
 import Loader from './shared/components/UIElements/Loader';
 
 const PropertyDetailedView = lazy(() =>

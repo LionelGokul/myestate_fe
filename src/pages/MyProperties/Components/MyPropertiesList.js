@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useStateValue } from '../../../shared/datalayer/Context';
+import { useStateValue } from '../../../shared/DataLayer/Context';
 import MyPropertiesCard from './MyPropertiesCard';
 import { useAxios } from '../../../shared/hooks/useAxios';
 import NoItems from '../../../shared/components/UIElements/NoItems';
-import AlertMessageContext from '../../../shared/datalayer/AlertMesageContext';
+import AlertMessageContext from '../../../shared/DataLayer/AlertMesageContext';
 
 const MyPropertiesList = () => {
   const { sendRequest } = useAxios();

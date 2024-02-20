@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactFacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import FacebookLogo from '../../../../images/facebookLogo.png';
-import { useStateValue } from '../../../../datalayer/Context';
-import { ACTIONS } from '../../../../datalayer/reducer';
+import FacebookLogo from '../../../../Images/facebookLogo.png';
+import { useStateValue } from '../../../../DataLayer/Context';
+import { ACTIONS } from '../../../../DataLayer/reducer';
 
 const FacebookLogin = (props) => {
   const [{}, dispatch] = useStateValue();

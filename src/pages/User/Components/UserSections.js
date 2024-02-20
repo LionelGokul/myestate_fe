@@ -1,7 +1,7 @@
 import React from 'react';
 import { BiBuildingHouse } from 'react-icons/bi';
 import { MdCloudUpload } from 'react-icons/md';
-import FavoriteIcon from '../../../shared/images/favorite-white-18dp.svg';
+import FavoriteIcon from '../../../shared/Images/favorite-white-18dp.svg';
 import UserSection from './UserSection';
 
 const sections = [

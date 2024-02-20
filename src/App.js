@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Header } from './shared/components/UIElements/Header';
-import { StateProvider } from './shared/datalayer/Context';
-import reducer from './shared/datalayer/reducer';
+import { StateProvider } from './shared/DataLayer/Context';
+import reducer from './shared/DataLayer/reducer';
 import Loader from './shared/components/UIElements/Loader';
 import AlertMessage from './shared/components/UIElements/AlertMessage';
-import LoaderContext from './shared/datalayer/LoaderContext';
-import AlertMessageContext from './shared/datalayer/AlertMesageContext';
+import LoaderContext from './shared/DataLayer/LoaderContext';
+import AlertMessageContext from './shared/DataLayer/AlertMesageContext';
 import Footer from './shared/components/UIElements/Footer';
 import Routing from './Routing';
 

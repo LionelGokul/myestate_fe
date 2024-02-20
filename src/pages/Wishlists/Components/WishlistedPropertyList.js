@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStateValue } from '../../../shared/datalayer/Context';
+import { useStateValue } from '../../../shared/DataLayer/Context';
 import WishlistedPropertyCard from './WishlistedPropertyCard';
 import NoItems from '../../../shared/components/UIElements/NoItems';
 

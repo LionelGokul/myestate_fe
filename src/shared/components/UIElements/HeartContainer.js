@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Badge from '@material-ui/core/Badge';
-import FavoriteIcon from '../../images/favorite_border-white-18dp.svg';
-import { useStateValue } from '../../datalayer/Context';
+import FavoriteIcon from '../../Images/favorite_border-white-18dp.svg';
+import { useStateValue } from '../../DataLayer/Context';
 
 const HeartContainer = (props) => {
   const [{ user, favList }] = useStateValue();

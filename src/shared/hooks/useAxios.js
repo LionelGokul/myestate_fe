@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import axios from 'axios';
 import { useCallback, useState } from 'react';
-import LoaderContext from '../datalayer/LoaderContext';
-import AlertMessageContext from '../datalayer/AlertMesageContext';
+import LoaderContext from '../DataLayer/LoaderContext';
+import AlertMessageContext from '../DataLayer/AlertMesageContext';
 
 export const useAxios = () => {
   const [error, setError] = useState('');

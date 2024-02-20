@@ -1,8 +1,8 @@
 import { useAxios } from './useAxios';
 import { useCallback, useContext } from 'react';
-import { useStateValue } from '../datalayer/Context';
-import { ACTIONS } from '../datalayer/reducer';
-import AlertMessageContext from '../datalayer/AlertMesageContext';
+import { useStateValue } from '../DataLayer/Context';
+import { ACTIONS } from '../DataLayer/reducer';
+import AlertMessageContext from '../DataLayer/AlertMesageContext';
 
 export const useWishList = () => {
   const { sendRequest } = useAxios();

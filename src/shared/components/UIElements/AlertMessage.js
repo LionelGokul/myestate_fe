@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import MuiAlert from '@material-ui/lab/Alert';
 import Fade from '@material-ui/core/Fade';
 import Snackbar from '@material-ui/core/Snackbar';
-import AlertMessageContext from '../../datalayer/AlertMesageContext';
+import AlertMessageContext from '../../DataLayer/AlertMesageContext';
 
 const AlertMessage = () => {
   const context = useContext(AlertMessageContext);

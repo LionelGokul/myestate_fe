@@ -7,7 +7,7 @@ import Loader from '../../shared/components/UIElements/Loader';
 import {
   SearchResultsReducer,
   ACTIONS,
-} from '../../shared/datalayer/SearchResultsReducer';
+} from '../../shared/DataLayer/SearchResultsReducer';
 import { useAxios } from '../../shared/hooks/useAxios';
 const SearchResultsPropertyList = lazy(() =>
   import('./Components/SearchResultsPropertyList'),

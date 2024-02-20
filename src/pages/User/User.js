@@ -2,10 +2,10 @@ import React, { useState, Suspense, lazy, useContext } from 'react';
 import { useAxios } from '../../shared/hooks/useAxios';
 import Form from '../../shared/components/FormElements/Form';
 import Title from '../../shared/components/UIElements/Title';
-import { useStateValue } from '../../shared/datalayer/Context';
-import { ACTIONS } from '../../shared/datalayer/reducer';
+import { useStateValue } from '../../shared/DataLayer/Context';
+import { ACTIONS } from '../../shared/DataLayer/reducer';
 import Loader from '../../shared/components/UIElements/Loader';
-import AlertMessageContext from '../../shared/datalayer/AlertMesageContext';
+import AlertMessageContext from '../../shared/DataLayer/AlertMesageContext';
 
 const UserSections = lazy(() => import('./Components/UserSections'));
 const UserForm = lazy(() => import('./Components/UserForm'));

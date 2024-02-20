@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { useAxios } from '../../../../hooks/useAxios';
 import ReactGoogleLogin from 'react-google-login';
-import GoogleLogo from '../../../../../shared/images/googleLogo.png';
-import { useStateValue } from '../../../../datalayer/Context';
-import { ACTIONS } from '../../../../datalayer/reducer';
-import AlertMessageContext from '../../../../datalayer/AlertMesageContext';
+import GoogleLogo from '../../../../../shared/Images/googleLogo.png';
+import { useStateValue } from '../../../../DataLayer/Context';
+import { ACTIONS } from '../../../../DataLayer/reducer';
+import AlertMessageContext from '../../../../DataLayer/AlertMesageContext';
 
 const GoogleLogin = (props) => {
   const alertContext = useContext(AlertMessageContext);

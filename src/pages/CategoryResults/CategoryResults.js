@@ -5,7 +5,7 @@ import CategoryResultList from './Components/CategoryResultList';
 import {
   SearchResultsReducer,
   ACTIONS,
-} from '../../shared/datalayer/SearchResultsReducer';
+} from '../../shared/DataLayer/SearchResultsReducer';
 import Grid from '@material-ui/core/Grid';
 import Form from '../../shared/components/FormElements/Form';
 import Loader from '../../shared/components/UIElements/Loader';

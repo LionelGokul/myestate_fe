@@ -2,12 +2,12 @@ import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import '../../../../shared/css/Login.css';
+import '../../../../shared/CSS/Login.css';
 import LoginForm from './Components/LoginForm';
 import Grid from '@material-ui/core/Grid';
 import Title from '../../../../shared/components/UIElements/Title';
 import SocialLogin from './Components/SocialLogin';
-import CoverImage from '../../../images/Login_cover.jpg';
+import CoverImage from '../../../Images/Login_cover.jpg';
 
 const Login = (props) => {
   return (

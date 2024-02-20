@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useAxios } from '../../hooks/useAxios';
-import AlertMesageContext from '../../datalayer/AlertMesageContext';
-import { useStateValue } from '../../datalayer/Context';
+import AlertMesageContext from '../../DataLayer/AlertMesageContext';
+import { useStateValue } from '../../DataLayer/Context';
 import Grid from '@material-ui/core/Grid';
 import Form from '../FormElements/Form';
 import FooterElements from './FooterElements';
